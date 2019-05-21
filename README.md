@@ -1,2 +1,3 @@
 # ChallengeTeamA
 とりあえずモジュールごとにbranch切ってください
+masterには絶対pushしないでください。お兄さんとの約束だよ！
