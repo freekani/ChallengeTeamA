@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\broadcast"
+    "\\newsync",
+    "\\newsync\\obj"
   ],
-  "SelectedNode": "\\broadcast\\Program.cs",
+  "SelectedNode": "\\newsync\\Program.cs",
   "PreviewInSolutionExplorer": false
 }
