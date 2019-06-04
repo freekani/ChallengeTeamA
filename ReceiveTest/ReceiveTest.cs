@@ -1,5 +1,5 @@
 ﻿using System;
-namespace syncapp
+namespace ReceiveTest
 {
     public class ReceiveTest
     {
