@@ -1,0 +1,11 @@
+C:\Users\yuuki\Source\Repos\freekani\ChallengeTeamA\retest\bin\Debug\netcoreapp2.2\retest.deps.json
+C:\Users\yuuki\Source\Repos\freekani\ChallengeTeamA\retest\bin\Debug\netcoreapp2.2\retest.runtimeconfig.json
+C:\Users\yuuki\Source\Repos\freekani\ChallengeTeamA\retest\bin\Debug\netcoreapp2.2\retest.runtimeconfig.dev.json
+C:\Users\yuuki\Source\Repos\freekani\ChallengeTeamA\retest\bin\Debug\netcoreapp2.2\retest.dll
+C:\Users\yuuki\Source\Repos\freekani\ChallengeTeamA\retest\bin\Debug\netcoreapp2.2\retest.pdb
+C:\Users\yuuki\Source\Repos\freekani\ChallengeTeamA\retest\obj\Debug\netcoreapp2.2\retest.csprojAssemblyReference.cache
+C:\Users\yuuki\Source\Repos\freekani\ChallengeTeamA\retest\obj\Debug\netcoreapp2.2\retest.csproj.CoreCompileInputs.cache
+C:\Users\yuuki\Source\Repos\freekani\ChallengeTeamA\retest\obj\Debug\netcoreapp2.2\retest.AssemblyInfoInputs.cache
+C:\Users\yuuki\Source\Repos\freekani\ChallengeTeamA\retest\obj\Debug\netcoreapp2.2\retest.AssemblyInfo.cs
+C:\Users\yuuki\Source\Repos\freekani\ChallengeTeamA\retest\obj\Debug\netcoreapp2.2\retest.dll
+C:\Users\yuuki\Source\Repos\freekani\ChallengeTeamA\retest\obj\Debug\netcoreapp2.2\retest.pdb

@@ -1,7 +1,8 @@
-using System;
+﻿using System;
 using System.Net.Sockets;
 using System.Text;
-namespace syncapp
+
+namespace sync
 {
     class Program
     {
@@ -35,7 +36,6 @@ namespace syncapp
             udp.Close();
 
             Console.WriteLine("終了しました。");
-            Console.ReadLine();
         }
     }
 }
