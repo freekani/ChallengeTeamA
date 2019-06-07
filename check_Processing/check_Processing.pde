@@ -1,6 +1,6 @@
-//import processing.sound.*;
+import processing.sound.*;
 
-//SinOsc sine1, sine2;
+SinOsc sine1, sine2;
 
 import de.voidplus.leapmotion.*;
 
@@ -22,12 +22,11 @@ void setup() {
   size(800, 500);
   background(255);
   // ...
-  /*
+  
   sine1 = new SinOsc(this);
   sine1.freq(500);
   sine2 = new SinOsc(this);
   sine2.freq(600);
-*/
   leap = new LeapMotion(this);
 }
 
@@ -82,7 +81,7 @@ void draw() {
     // --------------------------------------------------
     // Drawing
     hand.draw();
-    if(handPitch==1){println("Pinch");}
+    if(handPinch==1){println("1");}
 
     // ==================================================
     // 3. Arm
@@ -101,23 +100,24 @@ void draw() {
     Finger  fingerThumb        = hand.getThumb();
     // or                        hand.getFinger("thumb");
     // or                        hand.getFinger(0);
-    if (!fingerThumb.isExtended()) {
-      println("Thumb");
-    }
     Finger  fingerIndex        = hand.getIndexFinger();
-    if (!fingerIndex.isExtended()) {
-      println("Index");
-    }
     Finger  fingerMiddle       = hand.getMiddleFinger();
-    if (!fingerMiddle.isExtended()) {
-      println("Middle");
-    }
     Finger  fingerRing         = hand.getRingFinger();
-    if (!fingerRing.isExtended()) {
-      println("Ring");
-    }
     Finger  fingerPink         = hand.getPinkyFinger();
-    if (!fingerPink.isExtended()) {
+ 
+    if(!fingerThumb.isExtended()&&!fingerIndex.isExtended()&&!fingerMiddle.isExtended()&&!fingerRing.isExtended()&&!fingerPink.isExtended()){
+       sine1.stop();
+      println("止める");
+    }if(fingerThumb.isExtended()) {
+      println("Thumb");
+    }if (fingerIndex.isExtended()) {//人差し指
+      println("Index");
+      sine1.play();
+    }if (fingerMiddle.isExtended()) {
+      println("Middle");
+    }if (fingerRing.isExtended()) {
+      println("Ring");
+    }if (fingerPink.isExtended()) {
       println("Pink");
     }
     for (Finger finger : hand.getFingers()) {
