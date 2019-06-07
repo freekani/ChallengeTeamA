@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Net.Sockets;
 using System.Text;
+using System.IO;
+using System.Threading;
 
 namespace sync
 {
@@ -15,24 +17,18 @@ namespace sync
             //UdpClientオブジェクトを作成する
             UdpClient udp = new UdpClient();
 
-            for (; ; )
+            //送信するデータを作成する
+            Console.WriteLine("データ送信");
+            int number = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < number; i++)
             {
-                //送信するデータを作成する
-                Console.WriteLine("データ送信");
-                string sendMsg = Console.ReadLine();
-                byte[] sendBytes = Encoding.UTF8.GetBytes(sendMsg);
-
-                //リモートホストを指定してデータを送信する
+                byte[] sendBytes = Encoding.UTF8.GetBytes(i.ToString());
                 udp.Send(sendBytes, sendBytes.Length, remoteHost, remotePort);
-
-                //"exit"と入力されたら終了
-                if (sendMsg.Equals("exit"))
-                {
-                    break;
-                }
+                Console.WriteLine(i + ":番目を送信しました。");
+                Thread.Sleep(500);
             }
 
-            //UdpClientを閉じる
             udp.Close();
 
             Console.WriteLine("終了しました。");
