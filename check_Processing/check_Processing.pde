@@ -15,14 +15,14 @@ import de.voidplus.leapmotion.*;
 // └─ 7. Devices
 // ======================================================
 
-
+int t=0;
 LeapMotion leap;
 
 void setup() {
   size(800, 500);
   background(255);
   // ...
-  
+
   sine1 = new SinOsc(this);
   sine1.freq(500);
   sine2 = new SinOsc(this);
@@ -35,26 +35,26 @@ void setup() {
 // 1. Callbacks
 
 void leapOnInit() {
-   println("Leap Motion Init");
+  println("Leap Motion Init");
 }
 void leapOnConnect() {
-   println("Leap Motion Connect");
+  println("Leap Motion Connect");
 }
 void leapOnFrame() {
   // println("Leap Motion Frame");
 }
 void leapOnDisconnect() {
-   println("Leap Motion Disconnect");
+  println("Leap Motion Disconnect");
 }
 void leapOnExit() {
-   println("Leap Motion Exit");
+  println("Leap Motion Exit");
 }
 
 
 void draw() {
   background(255);
   // ...
-
+  
   int fps = leap.getFrameRate();
   for (Hand hand : leap.getHands ()) {
 
@@ -80,8 +80,14 @@ void draw() {
 
     // --------------------------------------------------
     // Drawing
+    //上下
+    //左右
+    
     hand.draw();
-    if(handPinch==1){println("1");}
+      println(handPosition);
+    if (handPinch==1) {
+      println(handPosition.x);
+    }
 
     // ==================================================
     // 3. Arm
@@ -104,22 +110,27 @@ void draw() {
     Finger  fingerMiddle       = hand.getMiddleFinger();
     Finger  fingerRing         = hand.getRingFinger();
     Finger  fingerPink         = hand.getPinkyFinger();
- 
-    if(!fingerThumb.isExtended()&&!fingerIndex.isExtended()&&!fingerMiddle.isExtended()&&!fingerRing.isExtended()&&!fingerPink.isExtended()){
-       sine1.stop();
+
+    if (!fingerThumb.isExtended()&&!fingerIndex.isExtended()&&!fingerMiddle.isExtended()&&!fingerRing.isExtended()&&!fingerPink.isExtended()) {
+      sine1.stop();
       println("止める");
-    }if(fingerThumb.isExtended()) {
+    }
+   /* if (fingerThumb.isExtended()) {
       println("Thumb");
-    }if (fingerIndex.isExtended()) {//人差し指
+    }
+    if (fingerIndex.isExtended()) {//人差し指
       println("Index");
       sine1.play();
-    }if (fingerMiddle.isExtended()) {
-      println("Middle");
-    }if (fingerRing.isExtended()) {
-      println("Ring");
-    }if (fingerPink.isExtended()) {
-      println("Pink");
     }
+    if (fingerMiddle.isExtended()) {
+      println("Middle");
+    }
+    if (fingerRing.isExtended()) {
+      println("Ring");
+    }
+    if (fingerPink.isExtended()) {
+      println("Pink");
+    }*/
     for (Finger finger : hand.getFingers()) {
       // or              hand.getOutstretchedFingers();
       // or              hand.getOutstretchedFingersByAngle();
