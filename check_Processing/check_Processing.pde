@@ -1,14 +1,9 @@
-//import processing.sound.*;
+import processing.sound.*;
 
-//SinOsc sine1, sine2;
+SinOsc sine1, sine2;
 
 import de.voidplus.leapmotion.*;
-color a=color(255, 0, 0);
-color b=color(255, 0, 0);
-color c=color(255, 0, 0);
-color d=color(255, 0, 0);
-PVector prePos=new PVector(0, 0, 0);
-PVector pos=new PVector(0, 0, 0);
+
 // ======================================================
 // Table of Contents:
 // ├─ 1. Callbacks
@@ -24,16 +19,14 @@ PVector pos=new PVector(0, 0, 0);
 LeapMotion leap;
 
 void setup() {
-  fullScreen();
-  //size(800, 500);
+  size(800, 500);
   background(255);
   // ...
-  /*
+  
   sine1 = new SinOsc(this);
-   sine1.freq(500);
-   sine2 = new SinOsc(this);
-   sine2.freq(600);
-   */
+  sine1.freq(500);
+  sine2 = new SinOsc(this);
+  sine2.freq(600);
   leap = new LeapMotion(this);
 }
 
@@ -42,80 +35,24 @@ void setup() {
 // 1. Callbacks
 
 void leapOnInit() {
-  println("Leap Motion Init");
+   println("Leap Motion Init");
 }
 void leapOnConnect() {
-  println("Leap Motion Connect");
+   println("Leap Motion Connect");
 }
 void leapOnFrame() {
   // println("Leap Motion Frame");
 }
 void leapOnDisconnect() {
-  println("Leap Motion Disconnect");
+   println("Leap Motion Disconnect");
 }
 void leapOnExit() {
-  println("Leap Motion Exit");
+   println("Leap Motion Exit");
 }
 
-void drawRect() {
 
-  rectMode(CENTER);
-  strokeWeight(10);
-  strokeJoin(BEVEL);
-
-  textSize(128);
-  textAlign(CENTER, CENTER);
-  strokeWeight(10);
-  pushMatrix();
-  stroke(a);
-  fill(255);
-
-  translate(width/2, height/2-height/3);
-  //fill(255);
-  rect(0, 0, width/8, width/8);
-  fill(a);
-  text("1", 0, 0);
-
-  popMatrix();
-
-  pushMatrix();
-  stroke(b);
-  translate(width/2-width/3, height/2+height/4);
-  fill(255);
-  rect(0, 0, width/8, width/8);
-  fill(b);
-  text("3", 0, 0);
-  popMatrix();
-
-  pushMatrix();
-  stroke(c);
-  translate(width/2, height/2+height/4);
-  fill(255);
-  rect(0, 0, width/8, width/8);
-  fill(c);
-  text("2", 0, 0);
-  popMatrix();
-
-  pushMatrix();
-  stroke(d);
-  translate(width/2+width/3, height/2+height/4);
-  fill(255);
-  rect(0, 0, width/8, width/8);
-  fill(d);
-  text("4", 0, 0);
-  popMatrix();
-
- 
-  //  text("1", width/2, height/2-height/3);
-//
- // text("2", width/2-width/3, height/2+height/4);
- // text("3", width/2, height/2+height/4);
-  //text("4", width/2+width/3, height/2+height/4);
-}
 void draw() {
-
   background(255);
-
   // ...
 
   int fps = leap.getFrameRate();
@@ -143,42 +80,9 @@ void draw() {
 
     // --------------------------------------------------
     // Drawing
-    drawRect();
-    println(handTime%1);
-    if (handTime==0) {
-      PVector prePos=new PVector(pos.x, pos.y, pos.z);
-      PVector pos=new PVector(handPosition.x, handPosition.y, handPosition.z);
-    }
-    textSize(32);
     hand.draw();
-    /* a=(handPosition.y<height/2&&handPosition.y>0&&handPinch==1)?color(0,255,0):color(255,0,0);
-     b=(handPosition.x>0&&handPosition.x<width/2&&handPosition.y<height&&handPinch==1)?color(0,255,0):color(255,0,0);
-     c=(handPosition.x>width/2&&handPosition.x<width&&handPosition.y<height&&handPinch==1)?color(0,255,0):color(255,0,0);
-     */
-    /*
-      rect(-width/3, height/4, width/6, width/6);
-     popMatrix();
-     pushMatrix();
-     stroke(c);
-     translate(width/2, height/2);
-     rect(0, height/4, width/6, width/6);
-     popMatrix();
-     
-     pushMatrix();
-     stroke(d);
-     translate(width/2, height/2);
-     rect(width/3, height/4, width/6, width/6);
-     */
-    a=(handPosition.x>width/2-width/8&&handPosition.x<width/2+width/8&&handPosition.y<height/2-height/3+width/8&&handPosition.y>height/2-height/3-width/8)?color(0, 255, 0):color(255, 0, 0);
-    b=(handPosition.x>width/2-width/3-width/8&&handPosition.x<width/2-width/3+width/8&&handPosition.y<height/2+height/4+width/8&&handPosition.y>height/2+height/4-width/8)?color(0, 255, 0):color(255, 0, 0);
-    c=(handPosition.x>width/2-width/8&&handPosition.x<width/2+width/8&&handPosition.y<height/2+height/4+width/8&&handPosition.y>height/2+height/4-width/8)?color(0, 255, 0):color(255, 0, 0);
-    d=(handPosition.x>width/2+width/3-width/8&&handPosition.x<width/2*width/3+width/8&&handPosition.y<height/2+height/4+width/8&&handPosition.y>height/2+height/4-width/8)?color(0, 255, 0):color(255, 0, 0);
+    if(handPinch==1){println("1");}
 
-    //      println(handPinch);
-    //   if(handPinch==1){println(1111);}
-
-
-    println(handPosition);
     // ==================================================
     // 3. Arm
 
@@ -196,26 +100,27 @@ void draw() {
     Finger  fingerThumb        = hand.getThumb();
     // or                        hand.getFinger("thumb");
     // or                        hand.getFinger(0);
-    /* if (!fingerThumb.isExtended()) {
-     println("Thumb");
-     }
-     Finger  fingerIndex        = hand.getIndexFinger();
-     if (!fingerIndex.isExtended()) {
-     println("Index");
-     }
-     Finger  fingerMiddle       = hand.getMiddleFinger();
-     if (!fingerMiddle.isExtended()) {
-     println("Middle");
-     }
-     Finger  fingerRing         = hand.getRingFinger();
-     if (!fingerRing.isExtended()) {
-     println("Ring");
-     }
-     Finger  fingerPink         = hand.getPinkyFinger();
-     if (!fingerPink.isExtended()) {
-     println("Pink");
-     }
-     */    for (Finger finger : hand.getFingers()) {
+    Finger  fingerIndex        = hand.getIndexFinger();
+    Finger  fingerMiddle       = hand.getMiddleFinger();
+    Finger  fingerRing         = hand.getRingFinger();
+    Finger  fingerPink         = hand.getPinkyFinger();
+ 
+    if(!fingerThumb.isExtended()&&!fingerIndex.isExtended()&&!fingerMiddle.isExtended()&&!fingerRing.isExtended()&&!fingerPink.isExtended()){
+       sine1.stop();
+      println("止める");
+    }if(fingerThumb.isExtended()) {
+      println("Thumb");
+    }if (fingerIndex.isExtended()) {//人差し指
+      println("Index");
+      sine1.play();
+    }if (fingerMiddle.isExtended()) {
+      println("Middle");
+    }if (fingerRing.isExtended()) {
+      println("Ring");
+    }if (fingerPink.isExtended()) {
+      println("Pink");
+    }
+    for (Finger finger : hand.getFingers()) {
       // or              hand.getOutstretchedFingers();
       // or              hand.getOutstretchedFingersByAngle();
 
