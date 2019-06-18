@@ -11,8 +11,8 @@ namespace sync
         static void Main(string[] args)
         {
             //データを送信するリモートホストとポート番号
-            string remoteHost = "127.0.0.1";
-            int remotePort = 2222;
+            string remoteHost = "255.255.255.255";
+            int remotePort = 53131;
 
             //UdpClientオブジェクトを作成する
             UdpClient udp = new UdpClient();
