@@ -1,4 +1,5 @@
 # LeapMotion
+:shipit:Leap Motionを用いたジェスチャ操作による、拍数情報をraspberry piに送る。
 ## 目次
 1. Rasberry pi(Ubuntu)でLeap motionが動くかの検証
 2. ~~Unity~~
