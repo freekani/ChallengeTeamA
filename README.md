@@ -1,5 +1,5 @@
 # LeapMotion
-:shipit:Leap Motionを用いたジェスチャ操作による、拍数情報をraspberry piに送る。
+　:shipit:Leap Motionを用いたジェスチャ操作による、拍数情報をraspberry piに送る。
 ## 目次
 1. Rasberry pi(Ubuntu)でLeap motionが動くかの検証
 2. ~~Unity~~
@@ -27,19 +27,19 @@
 - [ ] 指揮棒の検出
 - [ ] プログラムの完成
 ### 開発
-[leap-motion-processing](https://github.com/nok/leap-motion-processing)のコードで、Processingでleapmotionの実行を確認した
+　[leap-motion-processing](https://github.com/nok/leap-motion-processing)のコードで、Processingでleapmotionの実行を確認した
 #### LeapOrchestra（開発中）
-[LeapOrchestraへ移動](https://github.com/SkyoKen/LeapOrchestra)
+　[LeapOrchestraへ移動](https://github.com/SkyoKen/LeapOrchestra)
 #### LeapDraw（手の座標で線を描く）
-[LeapDrawへ移動 (update 2019.06.21)](https://github.com/SkyoKen/LeapDraw)
+　[LeapDrawへ移動 (update 2019.06.21)](https://github.com/SkyoKen/LeapDraw)
 #### ~~Processing で通信するプログラム~~  
-[~~NetTermianlへ移動 (update 2019.06.18)~~](https://github.com/SkyoKen/NetTerminal/tree/master/Net)
+　[~~NetTermianlへ移動 (update 2019.06.18)~~](https://github.com/SkyoKen/NetTerminal/tree/master/Net)
 #### ~~バイナリファイルからデータの書き込みと読み込み~~
-[~~binaryへ移動 (update 2019.06.20)~~](https://github.com/SkyoKen/LeapOrchestra/tree/master/binary) 
+　[~~binaryへ移動 (update 2019.06.20)~~](https://github.com/SkyoKen/LeapOrchestra/tree/master/binary) 
 #### Processing用のUDP通信プログラム
-[UDP通信プログラムへ移動](https://github.com/SkyoKen/NetTerminal/tree/master/UDP/Processing)
+　[UDP通信プログラムへ移動](https://github.com/SkyoKen/NetTerminal/tree/master/UDP/Processing)
 #### LeapPiano（Leap Motionを用いたジェスチャ操作によるピアノを弾くプログラム）
-[LeapPianoへ移動(update 2019.06.21)](https://github.com/SkyoKen/LeapPiano)
+　[LeapPianoへ移動(update 2019.06.21)](https://github.com/SkyoKen/LeapPiano)
 
 
 [↑TOP](#目次)
