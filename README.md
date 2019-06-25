@@ -39,7 +39,7 @@
 #### Processing用のUDP通信プログラム
 　[UDP通信プログラムへ移動](https://github.com/SkyoKen/NetTerminal/tree/master/UDP/Processing)
 #### LeapPiano（Leap Motionを用いたジェスチャ操作によるピアノを弾くプログラム）
-　[LeapPianoへ移動(update 2019.06.21)](https://github.com/SkyoKen/LeapPiano)
+　[LeapPianoへ移動(update 2019.06.25)](https://github.com/SkyoKen/LeapPiano)
 
 
 [↑TOP](#目次)
