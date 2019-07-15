@@ -40,6 +40,8 @@
 　[UDP通信プログラムへ移動](https://github.com/SkyoKen/NetTerminal/tree/master/UDP/Processing)
 #### LeapPiano（Leap Motionを用いたジェスチャ操作によるピアノを弾くプログラム）
 　[LeapPianoへ移動(update 2019.06.25)](https://github.com/SkyoKen/LeapPiano)
-
+### Processingでsonic piをコントロール（OSC通信）
+[Processing2SonicPiへ](https://github.com/SkyoKen/Processing2SonicPi)
+![Processing2SonicPi.png](https://github.com/SkyoKen/Leap_SonicPi/blob/master/info.png)
 
 [↑TOP](#目次)
