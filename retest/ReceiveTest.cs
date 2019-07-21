@@ -9,7 +9,8 @@ namespace retest
         public ReceiveTest(int port)
         {
             string localIpString = "127.0.0.1";
-            IPAddress localAddress = IPAddress.Parse(localIpString);
+            //IPAddress localAddress = IPAddress.Parse(localIpString);
+            IPAddress localAddress = IPAddress.Any;
             int localPort = port;
 
             //UdpClientを作成し、ローカルエンドポイントにバインドする

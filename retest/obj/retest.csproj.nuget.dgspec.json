@@ -1,26 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yuuki\\Source\\Repos\\freekani\\ChallengeTeamA\\retest\\retest.csproj": {}
+    "C:\\Users\\kasum\\MyWorkSpace\\challenge\\ChallengeTeamA\\retest\\retest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yuuki\\Source\\Repos\\freekani\\ChallengeTeamA\\retest\\retest.csproj": {
+    "C:\\Users\\kasum\\MyWorkSpace\\challenge\\ChallengeTeamA\\retest\\retest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yuuki\\Source\\Repos\\freekani\\ChallengeTeamA\\retest\\retest.csproj",
+        "projectUniqueName": "C:\\Users\\kasum\\MyWorkSpace\\challenge\\ChallengeTeamA\\retest\\retest.csproj",
         "projectName": "retest",
-        "projectPath": "C:\\Users\\yuuki\\Source\\Repos\\freekani\\ChallengeTeamA\\retest\\retest.csproj",
-        "packagesPath": "C:\\Users\\yuuki\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yuuki\\Source\\Repos\\freekani\\ChallengeTeamA\\retest\\obj\\",
+        "projectPath": "C:\\Users\\kasum\\MyWorkSpace\\challenge\\ChallengeTeamA\\retest\\retest.csproj",
+        "packagesPath": "C:\\Users\\kasum\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kasum\\MyWorkSpace\\challenge\\ChallengeTeamA\\retest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\yuuki\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\kasum\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
