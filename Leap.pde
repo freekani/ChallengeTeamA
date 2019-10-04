@@ -33,12 +33,10 @@ public class LEAP {
   public void update() {
     //  this.t++;
     HandDraw();
-
-
     if (this.gesture) {
       this.t++;
       check();
-    } else {
+    } else if(!this.gesture&&gui.getController("bar").getValue()==1){
       for (Hand hand : this.leap.getHands()) {
 
         this.mFrame=hand.getTimeVisible();
@@ -61,7 +59,7 @@ public class LEAP {
   }
 
   private float CalcuateDistance(float mFrame) {
-    gesture_zoom=true;
+ //   gesture_zoom=true;
     gesture_left=false;
     gesture_right=false;
 
@@ -92,7 +90,7 @@ public class LEAP {
         println("waiting...");
         this.old_position= hand.getPosition();
 
-        this.gesture_zoom=false;
+     //   this.gesture_zoom=false;
         this.gesture_left=false;
         this.gesture_right=false;
         this.gesture_up=false;

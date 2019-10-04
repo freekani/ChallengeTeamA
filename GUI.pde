@@ -58,6 +58,7 @@ this.cp5.addTextarea("IPPORT")
           .align(CENTER, CENTER, CENTER, CENTER);
       }
     }
+
     //PlayButon
     this.PLAY=this.cp5.addToggle("PLAY")
       .setPosition(width-250+25, 100)
@@ -84,7 +85,7 @@ this.cp5.addTextarea("IPPORT")
       .setFont(fontMsg)
       .setSize(width, 30)
 
-      .addItems(split("SHOW HIDE GESTURE", " "))
+      .addItems(split("BUTTON WAVE GESTURE", " "))
       ;
 
     this.chart = this.cp5.addChart("dataflow")
@@ -144,7 +145,7 @@ this.cp5.addTextarea("IPPORT")
         this.cp5.getController(msg[y]+(x==0?"-":"+")).show();
       }
     }
-    writeMsg("SHOW");
+    writeMsg("BUTTON");
   }
   public void hide() {
     this.cp5.getController("PLAY").hide();
@@ -157,7 +158,7 @@ this.cp5.addTextarea("IPPORT")
         this.cp5.getController(msg[y]+(x==0?"-":"+")).hide();
       }
     }
-    writeMsg("HIDE");
+    writeMsg("WAVE");
   }
   public boolean getFlag() {
     return gui.getController("PLAY").getValue()==1;
@@ -199,6 +200,7 @@ public void bar(int n) {
     break;
   case 2:
     lp.setGesture(true);
+    writeMsg("GESTURE");
   default:
     break;
   }
