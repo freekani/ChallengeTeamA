@@ -1,0 +1,11 @@
+C:\Users\kasum\MyWorkSpace\challenge\ChallengeTeamA\sync\bin\Debug\netcoreapp2.2\sync.deps.json
+C:\Users\kasum\MyWorkSpace\challenge\ChallengeTeamA\sync\bin\Debug\netcoreapp2.2\sync.runtimeconfig.json
+C:\Users\kasum\MyWorkSpace\challenge\ChallengeTeamA\sync\bin\Debug\netcoreapp2.2\sync.runtimeconfig.dev.json
+C:\Users\kasum\MyWorkSpace\challenge\ChallengeTeamA\sync\bin\Debug\netcoreapp2.2\sync.dll
+C:\Users\kasum\MyWorkSpace\challenge\ChallengeTeamA\sync\bin\Debug\netcoreapp2.2\sync.pdb
+C:\Users\kasum\MyWorkSpace\challenge\ChallengeTeamA\sync\obj\Debug\netcoreapp2.2\sync.csprojAssemblyReference.cache
+C:\Users\kasum\MyWorkSpace\challenge\ChallengeTeamA\sync\obj\Debug\netcoreapp2.2\sync.csproj.CoreCompileInputs.cache
+C:\Users\kasum\MyWorkSpace\challenge\ChallengeTeamA\sync\obj\Debug\netcoreapp2.2\sync.AssemblyInfoInputs.cache
+C:\Users\kasum\MyWorkSpace\challenge\ChallengeTeamA\sync\obj\Debug\netcoreapp2.2\sync.AssemblyInfo.cs
+C:\Users\kasum\MyWorkSpace\challenge\ChallengeTeamA\sync\obj\Debug\netcoreapp2.2\sync.dll
+C:\Users\kasum\MyWorkSpace\challenge\ChallengeTeamA\sync\obj\Debug\netcoreapp2.2\sync.pdb
