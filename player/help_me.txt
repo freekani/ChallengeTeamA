@@ -1,0 +1,31 @@
+require "socket"
+arrays=[80,80.0,79.0,78.0,77.0,76.0,75.0,74.0,73.0,72.0]
+$plays =[]
+udps = UDPSocket.open()
+udps.bind("255.255.255.255",53131)
+$note = 0
+
+
+
+
+live_loop :melodia do
+  $plays.shift
+  sleep 0.5
+end
+
+live_loop :melodia do
+  begin
+    
+    $plays.push(arrays[udps.recv(65535).to_i])
+    
+  rescue =>e
+    puts e
+    udps.close
+    break
+  end
+  sleep 0.01
+end
+
+
+
+
