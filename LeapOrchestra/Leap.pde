@@ -1,15 +1,28 @@
+enum State {
+  NOMOVE, MOVE
+}
+enum Vector {
+  LU, UP, RU, 
+    LEFT, CENTER, RIGHT, 
+    LD, DOWN, RD
+}
 
 public class Leap {
+
   private LeapMotion leap;
 
   private boolean change=false;
   private boolean gesture=false;
 
   private int t=0;
+  private State state=State.NOMOVE;
+  private Vector vector=Vector.CENTER;
+  private ArrayList<Vector> vec=new ArrayList<Vector>(); 
+
 
   private com.leapmotion.leap.Controller controller = new com.leapmotion.leap.Controller();
   private boolean gesturezoom=false;
-  private float smallestV=500*3;
+  private float smallestV=500;
 
 
   public Leap(LeapMotion leap) {
@@ -18,20 +31,173 @@ public class Leap {
 
   //処理
   public void update() {
-    
+
     HandDraw();
     if (this.gesture) {
       this.t++;
-     check();
-       
+      check();
     } else if (!this.gesture&&gui.getController("bar").getValue()==1) {
-      wsad();
+      //wsad();
+      think();
+      move();
     }
     if (gui.getFlag()&&CheckStop()) {
       gui.getController("PLAY").setValue(0);
     } else if (!gui.getFlag()&&CheckStart()) {
       gui.getController("PLAY").setValue(1);
     }
+  }
+  private void updateMotion(State s) {
+    this.state=s;
+  }
+  private void think() {
+    String msg="";
+    for (com.leapmotion.leap.Hand hand : this.controller.frame().hands()) {
+      PVector v=new PVector(hand.palmVelocity().getX(), hand.palmVelocity().getY(), hand.palmVelocity().getZ());
+      State s=this.state;
+      // Vector vec=this.vector;
+
+      switch(s) {
+      case NOMOVE:
+
+        if (!isNoMove(v)) {
+          s=State.MOVE;
+          if (v.x<-500 && v.y>500) {
+            this.vec.add(Vector.LU);
+          } else if (v.x>500 && v.y>500) {
+            this.vec.add(Vector.RU);
+          } else if (v.x<-500 && v.y<-500) {
+            this.vec.add(Vector.LD);
+          } else if (v.x>500 && v.y<-500) {
+            this.vec.add(Vector.RD);
+          } else if (v.x<-500) {
+            this.vec.add(Vector.LEFT);
+          } else if (v.x>500) {
+            this.vec.add(Vector.RIGHT);
+          } else if (v.y>500) {
+            this.vec.add(Vector.UP);
+          } else if (v.y<-500) {
+            this.vec.add(Vector.DOWN);
+          }
+        }
+        break;
+      case MOVE:
+        if (isNoMove(v)) {
+          s=State.NOMOVE;
+          this.vec.clear();
+          this.vec.add(Vector.CENTER);
+          //return;
+        } else {
+          if (v.x<-500 && v.y>500) {
+            this.vec.add(Vector.LU);
+          } else if (v.x>500 && v.y>500) {
+            this.vec.add(Vector.RU);
+          } else if (v.x<-500 && v.y<-500) {
+            this.vec.add(Vector.LD);
+          } else if (v.x>500 && v.y<-500) {
+            this.vec.add(Vector.RD);
+          } else if (v.x<-500) {
+            this.vec.add(Vector.LEFT);
+          } else if (v.x>500) {
+            this.vec.add(Vector.RIGHT);
+          } else if (v.y>500) {
+            this.vec.add(Vector.UP);
+          } else if (v.y<-500) {
+            this.vec.add(Vector.DOWN);
+          }
+        }
+        /*  switch(this.vec.get(this.vec.size()-1)) {
+         case UP:
+         if (v.x>500)this.vec.add(Vector.LU);
+         if (v.x<-500)this.vec.add(Vector.RU);
+         break;
+         case DOWN:
+         if (v.x>500)this.vec.add(Vector.LD);
+         if (v.x<-500)this.vec.add(Vector.RU);
+         break;
+         case LEFT:
+         if (v.y>500)this.vec.add(Vector.LU);
+         if (v.y<-500)this.vec.add(Vector.LD);
+         break;
+         case RIGHT:
+         if (v.y>500)this.vec.add(Vector.RU);
+         if (v.y<-500)this.vec.add(Vector.RD);
+         break;
+         }*/
+        break;
+      }
+      updateMotion(s);
+    }
+  }
+  private void move() {
+    State s=this.state;
+    // Vector vec=this.vector;
+
+    switch(s) {
+    case MOVE:
+      for (Vector v : this.vec) {
+        switch(v) {
+        case CENTER:
+          println("\nwait……");
+          break;
+        case LU:
+          print("←↑ ");
+          break;
+        case UP:
+          print("↑ ");
+          break;
+        case RU:
+          print("→↑ ");
+          break;
+        case LEFT:
+          print("← ");
+          break;
+        case RIGHT:
+          print("→ ");
+          break;
+        case LD:
+          print("←↓ ");
+          break;
+        case DOWN:
+          print("↓ ");
+          break;
+        case RD:
+          print("→↓ ");
+          break;
+        }
+      }
+      break;
+    }
+    /*  switch(this.vector) {
+     case CENTER:
+     println("wait……");
+     break;
+     case LU:
+     println("←↑");
+     break;
+     case UP:
+     println("↑");
+     break;
+     case RU:
+     println("→↑");
+     break;
+     case LEFT:
+     println("←");
+     break;
+     case RIGHT:
+     println("→");
+     break;
+     
+     case LD:
+     println("←↓");
+     break;
+     case DOWN:
+     println("↓");
+     break;
+     case RD:
+     println("→↓");
+     break;
+     }*/
   }
   private void wsad() {
     String msg="";
@@ -42,33 +208,34 @@ public class Leap {
       }
       if (!gesturezoom) {
         //vector
+
         if (v.x>500*3.5) {
           msg="→";
-          osc.sendMessage("MUSICNUM", 1);
-          this.gesturezoom=true;
+          //osc.sendMessage("MUSICNUM", 1);
+          //this.gesturezoom=true;
         } else if (v.x<-500*3.5) {
           msg="←";
-          osc.sendMessage("MUSICNUM", -1);
-          this.gesturezoom=true;
+          //osc.sendMessage("MUSICNUM", -1);
+          //this.gesturezoom=true;
         } else if (v.x>500*3) {
           msg="→";
-          osc.sendMessage("TIME", 0.25);
-          this.gesturezoom=true;
+          //osc.sendMessage("TIME", 0.25);
+          //this.gesturezoom=true;
         } else if (v.x<-500*3) {
           msg="←";
-          osc.sendMessage("TIME", -0.25);
-          this.gesturezoom=true;
+          //osc.sendMessage("TIME", -0.25);
+          //this.gesturezoom=true;
         } else if (v.y>500*3) {
           msg="↑";
-          osc.sendMessage("VOLUME", 1);
-          this.gesturezoom=true;
+          //osc.sendMessage("VOLUME", 1);
+          //this.gesturezoom=true;
         } else if (v.y<-500*3) {
           msg="↓";
-          osc.sendMessage("VOLUME", -1);
-          this.gesturezoom=true;
+          //osc.sendMessage("VOLUME", -1);
+          //this.gesturezoom=true;
         } else {
           msg="";
-          this.gesturezoom=false;
+          //this.gesturezoom=false;
         }
       }
     }
@@ -83,7 +250,7 @@ public class Leap {
 
     for (de.voidplus.leapmotion.Hand hand : this.leap.getHands ()) {
       //ジャスチャーの検出
-     if (this.t/60>2) {
+      if (this.t/60>2) {
         this.t=0;
         fill(255);
         //   text(this.t,width/2,height/2);
@@ -217,7 +384,6 @@ public class Leap {
   public void setGesture(boolean gesture) {
     this.gesture=gesture;
   }
-  
 }
 
 public  void leapOnInit() {
