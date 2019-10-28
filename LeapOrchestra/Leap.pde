@@ -62,21 +62,21 @@ public class Leap {
 
         if (!isNoMove(v)) {
           s=State.MOVE;
-          if (v.x<-500 && v.y>500) {
-            this.vec.add(Vector.LU);
-          } else if (v.x>500 && v.y>500) {
-            this.vec.add(Vector.RU);
-          } else if (v.x<-500 && v.y<-500) {
-            this.vec.add(Vector.LD);
-          } else if (v.x>500 && v.y<-500) {
-            this.vec.add(Vector.RD);
-          } else if (v.x<-500) {
+          /*if (v.x<-500 && v.y>500) {
+           this.vec.add(Vector.LU);
+           } else if (v.x>500 && v.y>500) {
+           this.vec.add(Vector.RU);
+           } else if (v.x<-500 && v.y<-500) {
+           this.vec.add(Vector.LD);
+           } else if (v.x>500 && v.y<-500) {
+           this.vec.add(Vector.RD);
+           } else */          if (v.x<-500) {
             this.vec.add(Vector.LEFT);
           } else if (v.x>500) {
             this.vec.add(Vector.RIGHT);
-          } else if (v.y>500) {
+          } else if (v.y>500/2) {
             this.vec.add(Vector.UP);
-          } else if (v.y<-500) {
+          } else if (v.y<-500/2) {
             this.vec.add(Vector.DOWN);
           }
         }
@@ -85,24 +85,24 @@ public class Leap {
         if (isNoMove(v)) {
           s=State.NOMOVE;
           this.vec.clear();
-          this.vec.add(Vector.CENTER);
+          // this.vec.add(Vector.CENTER);
           //return;
         } else {
-          if (v.x<-500 && v.y>500) {
-            this.vec.add(Vector.LU);
-          } else if (v.x>500 && v.y>500) {
-            this.vec.add(Vector.RU);
-          } else if (v.x<-500 && v.y<-500) {
-            this.vec.add(Vector.LD);
-          } else if (v.x>500 && v.y<-500) {
-            this.vec.add(Vector.RD);
-          } else if (v.x<-500) {
+          /*  if (v.x<-500 && v.y>500) {
+           this.vec.add(Vector.LU);
+           } else if (v.x>500 && v.y>500) {
+           this.vec.add(Vector.RU);
+           } else if (v.x<-500 && v.y<-500) {
+           this.vec.add(Vector.LD);
+           } else if (v.x>500 && v.y<-500) {
+           this.vec.add(Vector.RD);
+           } else */          if (v.x<-500) {
             this.vec.add(Vector.LEFT);
           } else if (v.x>500) {
             this.vec.add(Vector.RIGHT);
-          } else if (v.y>500) {
+          } else if (v.y>500/2) {
             this.vec.add(Vector.UP);
-          } else if (v.y<-500) {
+          } else if (v.y<-500/2) {
             this.vec.add(Vector.DOWN);
           }
         }
@@ -133,12 +133,23 @@ public class Leap {
     State s=this.state;
     // Vector vec=this.vector;
 
+
     switch(s) {
     case MOVE:
-      for (Vector v : this.vec) {
+      ArrayList<Vector> temp=new ArrayList<Vector>(); 
+      if (this.vec.size()>0) {
+        temp.add(this.vec.get(0));
+        for (Vector v : this.vec) {
+          if (!temp.get(temp.size()-1).equals(v)) {
+            temp.add(v);
+          }
+        }
+      }
+      print(temp.size()+" ");
+      for (Vector v : temp) {
         switch(v) {
         case CENTER:
-          println("\nwait……");
+          print("\nwait……");
           break;
         case LU:
           print("←↑ ");
@@ -164,6 +175,205 @@ public class Leap {
         case RD:
           print("→↓ ");
           break;
+        }
+      }
+      println();
+      
+      //2拍
+      /*
+      {
+        ArrayList<Vector> test=new ArrayList<Vector>(); 
+        test.add(Vector.DOWN);
+        test.add(Vector.RIGHT);
+        test.add(Vector.UP);
+        if (temp.size()>=test.size()) {
+          for (int i=0; i<temp.size()-test.size()+1; i++) {
+            boolean[] t=new boolean[test.size()]; 
+            boolean te=true;
+            for (int j=0; j<test.size(); j++) {
+              if (test.get(j).equals(temp.get(i+j))) {
+                t[j]=true;
+              }
+            }
+            for (boolean b : t) {
+              if (!b)te=false;
+            }
+            if (te)println("11111");
+          }
+        }
+      }
+      {
+        ArrayList<Vector> test=new ArrayList<Vector>(); 
+        test.add(Vector.DOWN);
+        test.add(Vector.LEFT);
+        test.add(Vector.UP);
+        if (temp.size()>=test.size()) {
+          for (int i=0; i<temp.size()-test.size()+1; i++) {
+            boolean[] t=new boolean[test.size()]; 
+            boolean te=true;
+            for (int j=0; j<test.size(); j++) {
+              if (test.get(j).equals(temp.get(i+j))) {
+                t[j]=true;
+              }
+            }
+            for (boolean b : t) {
+              if (!b)te=false;
+            }
+            if (te)println("22222");
+          }
+        }
+      }
+      */
+      
+      //3拍
+      /*
+           {
+        ArrayList<Vector> test=new ArrayList<Vector>(); 
+        test.add(Vector.DOWN);
+        if (temp.size()>=test.size()) {
+          for (int i=0; i<temp.size()-test.size()+1; i++) {
+            boolean[] t=new boolean[test.size()]; 
+            boolean te=true;
+            for (int j=0; j<test.size(); j++) {
+              if (test.get(j).equals(temp.get(i+j))) {
+                t[j]=true;
+              }
+            }
+            for (boolean b : t) {
+              if (!b)te=false;
+            }
+            if (te)println("11111");
+          }
+        }
+      }
+           {
+        ArrayList<Vector> test=new ArrayList<Vector>(); 
+        test.add(Vector.UP);
+        test.add(Vector.RIGHT);
+        test.add(Vector.DOWN);
+        test.add(Vector.RIGHT);
+        test.add(Vector.UP);
+        if (temp.size()>=test.size()) {
+          for (int i=0; i<temp.size()-test.size()+1; i++) {
+            boolean[] t=new boolean[test.size()]; 
+            boolean te=true;
+            for (int j=0; j<test.size(); j++) {
+              if (test.get(j).equals(temp.get(i+j))) {
+                t[j]=true;
+              }
+            }
+            for (boolean b : t) {
+              if (!b)te=false;
+            }
+            if (te)println("22222");
+          }
+        }
+      }
+           {
+        ArrayList<Vector> test=new ArrayList<Vector>(); 
+        test.add(Vector.DOWN);
+        test.add(Vector.LEFT);
+        test.add(Vector.UP);
+        if (temp.size()>=test.size()) {
+          for (int i=0; i<temp.size()-test.size()+1; i++) {
+            boolean[] t=new boolean[test.size()]; 
+            boolean te=true;
+            for (int j=0; j<test.size(); j++) {
+              if (test.get(j).equals(temp.get(i+j))) {
+                t[j]=true;
+              }
+            }
+            for (boolean b : t) {
+              if (!b)te=false;
+            }
+            if (te)println("33333");
+          }
+        }
+      }
+      //4拍
+      */
+            {
+        ArrayList<Vector> test=new ArrayList<Vector>(); 
+        test.add(Vector.DOWN);
+        if (temp.size()>=test.size()) {
+          for (int i=0; i<temp.size()-test.size()+1; i++) {
+            boolean[] t=new boolean[test.size()]; 
+            boolean te=true;
+            for (int j=0; j<test.size(); j++) {
+              if (test.get(j).equals(temp.get(i+j))) {
+                t[j]=true;
+              }
+            }
+            for (boolean b : t) {
+              if (!b)te=false;
+            }
+            if (te)println("11111");
+          }
+        }
+      }
+           {
+        ArrayList<Vector> test=new ArrayList<Vector>(); 
+        test.add(Vector.UP);
+        test.add(Vector.LEFT);
+        test.add(Vector.DOWN);
+        if (temp.size()>=test.size()) {
+          for (int i=0; i<temp.size()-test.size()+1; i++) {
+            boolean[] t=new boolean[test.size()]; 
+            boolean te=true;
+            for (int j=0; j<test.size(); j++) {
+              if (test.get(j).equals(temp.get(i+j))) {
+                t[j]=true;
+              }
+            }
+            for (boolean b : t) {
+              if (!b)te=false;
+            }
+            if (te)println("22222");
+          }
+        }
+      }
+           {
+        ArrayList<Vector> test=new ArrayList<Vector>(); 
+         test.add(Vector.UP);
+        test.add(Vector.RIGHT);
+        test.add(Vector.DOWN);
+        test.add(Vector.RIGHT);
+        test.add(Vector.UP);
+        if (temp.size()>=test.size()) {
+          for (int i=0; i<temp.size()-test.size()+1; i++) {
+            boolean[] t=new boolean[test.size()]; 
+            boolean te=true;
+            for (int j=0; j<test.size(); j++) {
+              if (test.get(j).equals(temp.get(i+j))) {
+                t[j]=true;
+              }
+            }
+            for (boolean b : t) {
+              if (!b)te=false;
+            }
+            if (te)println("33333");
+          }
+        }
+      }
+          {
+        ArrayList<Vector> test=new ArrayList<Vector>(); 
+        test.add(Vector.DOWN);
+        test.add(Vector.LEFT);
+        test.add(Vector.UP);
+        if (temp.size()>=test.size()) {
+          for (int i=0; i<temp.size()-test.size()+1; i++) {
+            boolean[] t=new boolean[test.size()]; 
+            boolean te=true;
+            for (int j=0; j<test.size(); j++) {
+              if (test.get(j).equals(temp.get(i+j))) {
+                t[j]=true;
+              }
+            }
+            for (boolean b : t) {
+              if (!b)te=false;
+            }
+            if (te)println("44444");
+          }
         }
       }
       break;
@@ -243,7 +453,7 @@ public class Leap {
   }
   //no move
   private boolean isNoMove(PVector v) {
-    return abs(v.x)<smallestV&&abs(v.y)<smallestV&&abs(v.z)<smallestV;
+    return abs(v.x*5)<smallestV&&abs(v.y*5)<smallestV&&abs(v.z*5)<smallestV;
   }
   //ジャスチャーの検出
   void check() {
