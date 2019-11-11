@@ -19,11 +19,13 @@ public class Leap {
   private Vector vector=Vector.CENTER;
   private ArrayList<Vector> vec=new ArrayList<Vector>(); 
 
-
+  private int num=0;
   private com.leapmotion.leap.Controller controller = new com.leapmotion.leap.Controller();
   private boolean gesturezoom=false;
   private float smallestV=500;
-
+Tempo[] tempo={new Tempo(new Vector[]{Vector.DOWN,Vector.RIGHT,Vector.UP}),
+new Tempo(new Vector[]{Vector.DOWN,Vector.LEFT,Vector.UP})};
+TempoList tempolist=new TempoList(tempo);
 
   public Leap(LeapMotion leap) {
     this.leap=leap;
@@ -33,10 +35,7 @@ public class Leap {
   public void update() {
 
     HandDraw();
-    if (this.gesture) {
-      this.t++;
-      check();
-    } else if (!this.gesture&&gui.getController("bar").getValue()==1) {
+    if (gui.getController("bar").getValue()==1) {
       //wsad();
       think();
       move();
@@ -145,43 +144,49 @@ public class Leap {
           }
         }
       }
-      print(temp.size()+" ");
-      for (Vector v : temp) {
-        switch(v) {
-        case CENTER:
-          print("\nwait……");
-          break;
-        case LU:
-          print("←↑ ");
-          break;
-        case UP:
-          print("↑ ");
-          break;
-        case RU:
-          print("→↑ ");
-          break;
-        case LEFT:
-          print("← ");
-          break;
-        case RIGHT:
-          print("→ ");
-          break;
-        case LD:
-          print("←↓ ");
-          break;
-        case DOWN:
-          print("↓ ");
-          break;
-        case RD:
-          print("→↓ ");
-          break;
-        }
-      }
-      println();
-      
+      //print(temp.size()+" ");
+      /*    for (Vector v : temp) {
+       switch(v) {
+       case CENTER:
+       print("\nwait……");
+       break;
+       case LU:
+       print("←↑ ");
+       break;
+       case UP:
+       print("↑ ");
+       break;
+       case RU:
+       print("→↑ ");
+       break;
+       case LEFT:
+       print("← ");
+       break;
+       case RIGHT:
+       print("→ ");
+       break;
+       case LD:
+       print("←↓ ");
+       break;
+       case DOWN:
+       print("↓ ");
+       break;
+       case RD:
+       print("→↓ ");
+       break;
+       }
+       }
+       */ //     println();
+       Vector[] test={Vector.DOWN,Vector.RIGHT,Vector.UP};
+      // List test=Arrays.asList(Vector.DOWN, Vector.RIGHT, Vector.UP);
+//Tempo tempo=new Tempo(1,test);
+
+  tempolist.check(temp);
+
       //2拍
-      /*
-      {
+      //*
+     /* switch(this.num){
+      case 0:{
         ArrayList<Vector> test=new ArrayList<Vector>(); 
         test.add(Vector.DOWN);
         test.add(Vector.RIGHT);
@@ -198,185 +203,209 @@ public class Leap {
             for (boolean b : t) {
               if (!b)te=false;
             }
-            if (te)println("11111");
-          }
-        }
-      }
-      {
-        ArrayList<Vector> test=new ArrayList<Vector>(); 
-        test.add(Vector.DOWN);
-        test.add(Vector.LEFT);
-        test.add(Vector.UP);
-        if (temp.size()>=test.size()) {
-          for (int i=0; i<temp.size()-test.size()+1; i++) {
-            boolean[] t=new boolean[test.size()]; 
-            boolean te=true;
-            for (int j=0; j<test.size(); j++) {
-              if (test.get(j).equals(temp.get(i+j))) {
-                t[j]=true;
-              }
-            }
-            for (boolean b : t) {
-              if (!b)te=false;
-            }
-            if (te)println("22222");
-          }
-        }
-      }
-      */
-      
-      //3拍
-      /*
-           {
-        ArrayList<Vector> test=new ArrayList<Vector>(); 
-        test.add(Vector.DOWN);
-        if (temp.size()>=test.size()) {
-          for (int i=0; i<temp.size()-test.size()+1; i++) {
-            boolean[] t=new boolean[test.size()]; 
-            boolean te=true;
-            for (int j=0; j<test.size(); j++) {
-              if (test.get(j).equals(temp.get(i+j))) {
-                t[j]=true;
-              }
-            }
-            for (boolean b : t) {
-              if (!b)te=false;
-            }
-            if (te)println("11111");
-          }
-        }
-      }
-           {
-        ArrayList<Vector> test=new ArrayList<Vector>(); 
-        test.add(Vector.UP);
-        test.add(Vector.RIGHT);
-        test.add(Vector.DOWN);
-        test.add(Vector.RIGHT);
-        test.add(Vector.UP);
-        if (temp.size()>=test.size()) {
-          for (int i=0; i<temp.size()-test.size()+1; i++) {
-            boolean[] t=new boolean[test.size()]; 
-            boolean te=true;
-            for (int j=0; j<test.size(); j++) {
-              if (test.get(j).equals(temp.get(i+j))) {
-                t[j]=true;
-              }
-            }
-            for (boolean b : t) {
-              if (!b)te=false;
-            }
-            if (te)println("22222");
-          }
-        }
-      }
-           {
-        ArrayList<Vector> test=new ArrayList<Vector>(); 
-        test.add(Vector.DOWN);
-        test.add(Vector.LEFT);
-        test.add(Vector.UP);
-        if (temp.size()>=test.size()) {
-          for (int i=0; i<temp.size()-test.size()+1; i++) {
-            boolean[] t=new boolean[test.size()]; 
-            boolean te=true;
-            for (int j=0; j<test.size(); j++) {
-              if (test.get(j).equals(temp.get(i+j))) {
-                t[j]=true;
-              }
-            }
-            for (boolean b : t) {
-              if (!b)te=false;
-            }
-            if (te)println("33333");
-          }
-        }
-      }
-      //4拍
-      */
-            {
-        ArrayList<Vector> test=new ArrayList<Vector>(); 
-        test.add(Vector.DOWN);
-        if (temp.size()>=test.size()) {
-          for (int i=0; i<temp.size()-test.size()+1; i++) {
-            boolean[] t=new boolean[test.size()]; 
-            boolean te=true;
-            for (int j=0; j<test.size(); j++) {
-              if (test.get(j).equals(temp.get(i+j))) {
-                t[j]=true;
-              }
-            }
-            for (boolean b : t) {
-              if (!b)te=false;
-            }
-            if (te)println("11111");
-          }
-        }
-      }
-           {
-        ArrayList<Vector> test=new ArrayList<Vector>(); 
-        test.add(Vector.UP);
-        test.add(Vector.LEFT);
-        test.add(Vector.DOWN);
-        if (temp.size()>=test.size()) {
-          for (int i=0; i<temp.size()-test.size()+1; i++) {
-            boolean[] t=new boolean[test.size()]; 
-            boolean te=true;
-            for (int j=0; j<test.size(); j++) {
-              if (test.get(j).equals(temp.get(i+j))) {
-                t[j]=true;
-              }
-            }
-            for (boolean b : t) {
-              if (!b)te=false;
-            }
-            if (te)println("22222");
-          }
-        }
-      }
-           {
-        ArrayList<Vector> test=new ArrayList<Vector>(); 
-         test.add(Vector.UP);
-        test.add(Vector.RIGHT);
-        test.add(Vector.DOWN);
-        test.add(Vector.RIGHT);
-        test.add(Vector.UP);
-        if (temp.size()>=test.size()) {
-          for (int i=0; i<temp.size()-test.size()+1; i++) {
-            boolean[] t=new boolean[test.size()]; 
-            boolean te=true;
-            for (int j=0; j<test.size(); j++) {
-              if (test.get(j).equals(temp.get(i+j))) {
-                t[j]=true;
-              }
-            }
-            for (boolean b : t) {
-              if (!b)te=false;
-            }
-            if (te)println("33333");
-          }
-        }
-      }
-          {
-        ArrayList<Vector> test=new ArrayList<Vector>(); 
-        test.add(Vector.DOWN);
-        test.add(Vector.LEFT);
-        test.add(Vector.UP);
-        if (temp.size()>=test.size()) {
-          for (int i=0; i<temp.size()-test.size()+1; i++) {
-            boolean[] t=new boolean[test.size()]; 
-            boolean te=true;
-            for (int j=0; j<test.size(); j++) {
-              if (test.get(j).equals(temp.get(i+j))) {
-                t[j]=true;
-              }
-            }
-            for (boolean b : t) {
-              if (!b)te=false;
-            }
-            if (te)println("44444");
+            if (te){println("11111");this.num=1;}
           }
         }
       }
       break;
+      case 1:
+      {
+        ArrayList<Vector> test=new ArrayList<Vector>(); 
+        test.add(Vector.DOWN);
+        test.add(Vector.LEFT);
+        test.add(Vector.UP);
+        if (temp.size()>=test.size()) {
+          for (int i=0; i<temp.size()-test.size()+1; i++) {
+            boolean[] t=new boolean[test.size()]; 
+            boolean te=true;
+            for (int j=0; j<test.size(); j++) {
+              if (test.get(j).equals(temp.get(i+j))) {
+                t[j]=true;
+              }
+            }
+            for (boolean b : t) {
+              if (!b)te=false;
+            }
+            if (te){println("22222");this.num=2;}
+          }
+        }
+      }
+      break;
+      case 2:
+      this.num=0;
+      break;
+      }
+      //*/
+
+      //3拍
+      /*
+           {
+       ArrayList<Vector> test=new ArrayList<Vector>(); 
+       test.add(Vector.DOWN);
+       if (temp.size()>=test.size()) {
+       for (int i=0; i<temp.size()-test.size()+1; i++) {
+       boolean[] t=new boolean[test.size()]; 
+       boolean te=true;
+       for (int j=0; j<test.size(); j++) {
+       if (test.get(j).equals(temp.get(i+j))) {
+       t[j]=true;
+       }
+       }
+       for (boolean b : t) {
+       if (!b)te=false;
+       }
+       if (te)println("11111");
+       }
+       }
+       }
+       {
+       ArrayList<Vector> test=new ArrayList<Vector>(); 
+       test.add(Vector.UP);
+       test.add(Vector.RIGHT);
+       test.add(Vector.DOWN);
+       test.add(Vector.RIGHT);
+       test.add(Vector.UP);
+       if (temp.size()>=test.size()) {
+       for (int i=0; i<temp.size()-test.size()+1; i++) {
+       boolean[] t=new boolean[test.size()]; 
+       boolean te=true;
+       for (int j=0; j<test.size(); j++) {
+       if (test.get(j).equals(temp.get(i+j))) {
+       t[j]=true;
+       }
+       }
+       for (boolean b : t) {
+       if (!b)te=false;
+       }
+       if (te)println("22222");
+       }
+       }
+       }
+       {
+       ArrayList<Vector> test=new ArrayList<Vector>(); 
+       test.add(Vector.DOWN);
+       test.add(Vector.LEFT);
+       test.add(Vector.UP);
+       if (temp.size()>=test.size()) {
+       for (int i=0; i<temp.size()-test.size()+1; i++) {
+       boolean[] t=new boolean[test.size()]; 
+       boolean te=true;
+       for (int j=0; j<test.size(); j++) {
+       if (test.get(j).equals(temp.get(i+j))) {
+       t[j]=true;
+       }
+       }
+       for (boolean b : t) {
+       if (!b)te=false;
+       }
+       if (te)println("33333");
+       }
+       }
+       }
+       //4拍
+       */
+
+      /*
+      switch(this.num) {
+       case 0:
+       {
+       ArrayList<Vector> test=new ArrayList<Vector>(); 
+       test.add(Vector.DOWN);
+       if (temp.size()>=test.size()) {
+       for (int i=0; i<temp.size()-test.size()+1; i++) {
+       boolean[] t=new boolean[test.size()]; 
+       boolean te=true;
+       for (int j=0; j<test.size(); j++) {
+       if (test.get(j).equals(temp.get(i+j))) {
+       t[j]=true;
+       }
+       }
+       for (boolean b : t) {
+       if (!b)te=false;
+       }
+       if (te){this.num=1;println("11111");}
+       }
+       }
+       }
+       break;
+       case 1:
+       {
+       ArrayList<Vector> test=new ArrayList<Vector>(); 
+       test.add(Vector.UP);
+       test.add(Vector.LEFT);
+       test.add(Vector.DOWN);
+       if (temp.size()>=test.size()) {
+       for (int i=0; i<temp.size()-test.size()+1; i++) {
+       boolean[] t=new boolean[test.size()]; 
+       boolean te=true;
+       for (int j=0; j<test.size(); j++) {
+       if (test.get(j).equals(temp.get(i+j))) {
+       t[j]=true;
+       }
+       }
+       for (boolean b : t) {
+       if (!b)te=false;
+       }
+       if (te){this.num=2;println("22222");}
+       }
+       }
+       }
+       break;
+       case 2:
+       {
+       ArrayList<Vector> test=new ArrayList<Vector>(); 
+       test.add(Vector.UP);
+       test.add(Vector.RIGHT);
+       test.add(Vector.DOWN);
+       test.add(Vector.RIGHT);
+       test.add(Vector.UP);
+       if (temp.size()>=test.size()) {
+       for (int i=0; i<temp.size()-test.size()+1; i++) {
+       boolean[] t=new boolean[test.size()]; 
+       boolean te=true;
+       for (int j=0; j<test.size(); j++) {
+       if (test.get(j).equals(temp.get(i+j))) {
+       t[j]=true;
+       }
+       }
+       for (boolean b : t) {
+       if (!b)te=false;
+       }
+       if (te){this.num=3;println("33333");}
+       }
+       }
+       }
+       break;
+       case 3:
+       {
+       ArrayList<Vector> test=new ArrayList<Vector>(); 
+       test.add(Vector.DOWN);
+       test.add(Vector.LEFT);
+       test.add(Vector.UP);
+       if (temp.size()>=test.size()) {
+       for (int i=0; i<temp.size()-test.size()+1; i++) {
+       boolean[] t=new boolean[test.size()]; 
+       boolean te=true;
+       for (int j=0; j<test.size(); j++) {
+       if (test.get(j).equals(temp.get(i+j))) {
+       t[j]=true;
+       }
+       }
+       for (boolean b : t) {
+       if (!b)te=false;
+       }
+       if (te){this.num=4;println("44444");
+       }
+       }
+       }
+       }
+       break;
+       case 4:
+       this.num=0;
+       break;
+       }
+       
+       //*/
     }
     /*  switch(this.vector) {
      case CENTER:
@@ -454,82 +483,6 @@ public class Leap {
   //no move
   private boolean isNoMove(PVector v) {
     return abs(v.x*5)<smallestV&&abs(v.y*5)<smallestV&&abs(v.z*5)<smallestV;
-  }
-  //ジャスチャーの検出
-  void check() {
-
-    for (de.voidplus.leapmotion.Hand hand : this.leap.getHands ()) {
-      //ジャスチャーの検出
-      if (this.t/60>2) {
-        this.t=0;
-        fill(255);
-        //   text(this.t,width/2,height/2);
-        String finger="";
-        String msg="";   
-        String s="";
-        int n=0;
-
-        for (de.voidplus.leapmotion.Finger f : hand.getFingers())finger+=f.isExtended()?1:0;
-        switch(finger) {
-        case "00000":
-          msg="0\nrock";
-          s="MUSICNUM";
-          n=-1;
-
-          break;
-        case "01000":
-          s="MUSICNUM";
-          n=1;
-          msg="1";
-          break;
-
-        case "01100":
-          s="VOLUME";
-          n=-1;
-          msg="2\nscissors";
-          break;
-
-        case "00111":
-          s="VOLUME";
-          n=1;
-          msg="3";
-          break;
-
-        case "01111":
-          s="SCALE";
-          n=-1;
-
-          msg="4";
-          break;
-
-        case "11111":
-          s="SCALE";
-          n=1;
-
-          msg="5\npaper";
-          break;
-
-        case "10001":
-          s="TIME";
-          n=-1;
-
-
-          msg="6";
-          break;
-
-        case "11000":
-          s="TIME";
-          n=1;
-          msg="7";
-          break;
-
-        default:
-          msg="?";
-          return;
-        }
-        osc.sendMessage(s, n);
-      }
-    }
   }
   private void HandDraw() {
     for (de.voidplus.leapmotion.Hand hand : this.leap.getHands ()) {

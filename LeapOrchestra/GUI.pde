@@ -86,7 +86,7 @@ public class GUI {
       .setFont(fontMsg)
       .setSize(width, 30)
 
-      .addItems(split("BUTTON WAVE GESTURE", " "))
+      .addItems(split("BUTTON WAVE", " "))
       ;
 
     this.chart = this.cp5.addChart("dataflow")
@@ -203,18 +203,12 @@ public void bar(int n) {
   case 0:
     gui.show();
     writeMsg("Button");
-    lp.setGesture(false);
     break;
   case 1:
     gui.hide();
     writeMsg("WAVE");
-    lp.setGesture(false);
     break;
-  case 2:
-    gui.hide();
-    lp.setGesture(true);
-    writeMsg("GESTURE");
-
+  
   default:
     break;
   }
