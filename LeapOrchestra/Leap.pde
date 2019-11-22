@@ -9,24 +9,21 @@ public class Leap {
   private LeapMotion leap;
 
   private boolean change=false;
-  //  private boolean gesture=false;
-
-  //private int t=0;
-  //private Vector vector=Vector.CENTER;
- // private ArrayList<Vector> vec=new ArrayList<Vector>(); 
   private Tempo vec=new Tempo();
   private com.leapmotion.leap.Controller controller = new com.leapmotion.leap.Controller();
-  //private boolean gesturezoom=false;
-  private float smallestV=250;
+  private float smallestV=500;
 
   private Tempo[][] tempo={{}, {}, 
     //Tempo2
     {new Tempo(new Vector[]{Vector.DOWN, Vector.RIGHT, Vector.UP}), 
       new Tempo(new Vector[]{Vector.DOWN, Vector.LEFT, Vector.UP})}, 
     //Tempo3
-    {new Tempo(new Vector[]{Vector.DOWN}), 
-      new Tempo(new Vector[]{Vector.UP, Vector.RIGHT, Vector.DOWN, Vector.RIGHT, Vector.UP}), 
-      new Tempo(new Vector[]{ Vector.DOWN, Vector.LEFT, Vector.UP}), 
+    {new Tempo( new Vector[]  {Vector.DOWN}),
+  new Tempo( new Vector[]  {Vector.DOWN,Vector.RIGHT,Vector.UP}),
+  new Tempo( new Vector[]  {Vector.DOWN,Vector.LEFT,Vector.UP}),
+  //new Vector[]{Vector.DOWN}), 
+   //   new Tempo(new Vector[]{Vector.UP, Vector.RIGHT, Vector.DOWN, Vector.RIGHT, Vector.UP}), 
+    //  new Tempo(new Vector[]{ Vector.DOWN, Vector.LEFT, Vector.UP}), 
     }, 
     //Tempo4
     {new Tempo(new Vector[]{Vector.DOWN}), 
@@ -35,7 +32,7 @@ public class Leap {
       new Tempo(new Vector[]{ Vector.DOWN, Vector.LEFT, Vector.UP})}
   };
   public TempoList tempolist=new TempoList(tempo[2]);
-
+  int f=0;
   public Leap(LeapMotion leap) {
     this.leap=leap;
   }
@@ -59,23 +56,33 @@ public class Leap {
 
     for (com.leapmotion.leap.Hand hand : this.controller.frame().hands()) {
       PVector v=new PVector(hand.palmVelocity().getX(), hand.palmVelocity().getY(), hand.palmVelocity().getZ());
-      
-    //  println(v);
+      String frame=this.controller.frame().toString();
+      f=Integer.parseInt(frame.substring(9,frame.length()))/60;
+     // println(f/60);
       if (isNoMove(v)) {
         this.vec.clear();
         return false;
       }
-      float speed=(hand.palmVelocity().getX()+ hand.palmVelocity().getY()+ hand.palmVelocity().getZ())%3;
-      if (v.x<-500) {
-        this.vec.add(Vector.LEFT,speed);
-      } else if (v.x>500) {
-        this.vec.add(Vector.RIGHT,speed);
-      } else if (v.y>500/2) {
-        this.vec.add(Vector.UP,speed);
-      } else if (v.y<-500/2) {
-        this.vec.add(Vector.DOWN,speed);
+     //  this.vec.clear();
+       
+      Vector rvector=Vector.CENTER;
+      Vector vector=Vector.CENTER;
+      if (this.vec.size()!=0) {
+        rvector=this.vec.getVector(this.vec.size()-1);
       }
-     // println(speed);
+      if (v.x<-500) {
+        vector=Vector.LEFT;
+      } else if (v.x>500) {
+        vector=Vector.RIGHT;
+      } else if (v.y>500/2) {
+        vector=Vector.UP;
+      } else if (v.y<-500/2) {
+        vector=Vector.DOWN;
+      }
+      if (!rvector.equals(vector)&&!vector.equals(Vector.CENTER)) {
+        this.vec.add(vector);
+          println(vec.toString());
+      }
       return this.vec.size()>0;
     } 
     return false;
@@ -84,27 +91,14 @@ public class Leap {
     checkVector();
   }
   private void checkVector() {
-    Tempo temp=new Tempo();
-    if (this.vec.size()>0) {
-      temp.add(this.vec.getVector(0),this.vec.getSpeed(0));
-      for(int i=0;i<this.vec.size();i++){
-       Vector v=this.vec.getVector(i);
-        if (!temp.getVector(temp.size()-1).equals(v)) {
-          temp.add(v);
-        }
-      }
-      //print
-      println(temp.toString());
-    }
-    //check
-    tempolist.check(temp);
+    tempolist.check(this.vec);
   }
   public void changeTempo(int n) {
     this.tempolist=new TempoList(this.tempo[n]);
   }
   //no move
   private boolean isNoMove(PVector v) {
-    return abs(v.x*5)<smallestV&&abs(v.y*5)<smallestV&&abs(v.z*5)<smallestV;
+    return abs(v.x*2)<smallestV&&abs(v.y*2)<smallestV&&abs(v.z*2)<smallestV;
   }
   private void HandDraw() {
     for (de.voidplus.leapmotion.Hand hand : this.leap.getHands ()) {
@@ -166,9 +160,6 @@ public class Leap {
   public void setChange(boolean change) {
     this.change=change;
   }
-  /*public void setGesture(boolean gesture) {
-   this.gesture=gesture;
-   }*/
 }
 
 public  void leapOnInit() {

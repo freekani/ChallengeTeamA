@@ -68,7 +68,7 @@ public class Tempo {
   } 
   public String toString() {
     String str="";
-    str+="size = "+this.size()+" speed = "+this.getSpeed()+"\n";
+  //  str+="size = "+this.size()+" speed = "+this.getSpeed()+"\n";
     for (int i=0; i<this.vector.size(); i++) {
       Vector v=(Vector)this.vector.get(i);
       switch(v) {
@@ -103,6 +103,20 @@ public class Tempo {
     }
     return str;
   }
+    public boolean equals(Tempo tempo) {
+    if (this.size()!=tempo.size())return false;
+    for (int i=0; i<this.size(); i++) {
+      if (!this.getVector(i).equals(tempo.getVector(i)))return false;
+    }
+    return true;
+  }
+  public void copy(Tempo tempo){
+    List<Vector> v=new ArrayList<Vector>(); 
+    for(int i=0;i<tempo.size();i++){
+      v.add(tempo.getVector(i));
+    }
+    this.vector=v;
+  }
 }
 public class TempoList {
   private int num;
@@ -114,8 +128,9 @@ public class TempoList {
   public void check(Tempo t) {
     Tempo tempo=this.list.get(this.num);
     if (tempo.check(t)) {
-      println(++this.num);
+     println(++this.num);
       this.num%=this.list.size();
+      
     }
   }
 }
