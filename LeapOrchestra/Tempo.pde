@@ -118,20 +118,46 @@ public class Tempo {
   }
 }
 public class TempoList {
+
   private int num;
   private List<Tempo> list;
+  private List<Float> bpm;
   public TempoList(Tempo... tempo) {
     this.num=0;
     this.list=Arrays.asList(tempo);
+    this.bpm=new ArrayList<Float>();
   }
   public boolean check(Tempo t) {
     Tempo tempo=this.list.get(this.num);
     if (tempo.check(t)) {
       println(++this.num);
-     // osc.sendMessage("test", this.num);
+      // osc.sendMessage("test", this.num);
       this.num%=this.list.size();
       return true;
     }
     return false;
+  }
+  public boolean check(Tempo t, float b) {
+    this.bpm.add(this.num==0?0:60/b);
+
+    Tempo tempo=this.list.get(this.num);
+    if (tempo.check(t)) {
+      println(++this.num, this.bpm.get(this.num));
+
+      this.num%=this.list.size();
+      if (this.num==0) {
+        println(this.num, this.bpm.get(this.num), this.getBpm());
+        // osc.sendMessage("test", this.num,this.getBpm());
+      }
+      return true;
+    }
+    return false;
+  }
+  public int getBpm() {
+    if (this.bpm.size()==0)return 0;
+
+    int sum=0;
+    for (float b : this.bpm)sum+=b;
+    return sum/this.bpm.size()-1;
   }
 }

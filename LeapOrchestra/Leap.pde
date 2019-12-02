@@ -55,19 +55,20 @@ public class Leap {
 
     for (com.leapmotion.leap.Hand hand : this.controller.frame().hands()) {
       PVector v=new PVector(hand.palmVelocity().getX(), hand.palmVelocity().getY(), hand.palmVelocity().getZ());
-      String frame=this.controller.frame().toString();
-      f=Integer.parseInt(frame.substring(9, frame.length()))/60/2;
-            // println(f);
-    
-    t++;
-    println(t/3*0.1);
+      // String frame=this.controller.frame().toString();
+      //f=Integer.parseInt(frame.substring(9, frame.length()))/60/2;
+      // println(f);
+
+      t++;
+      // println(t/3*0.1);    //0.1s
+      
+      
       if (isNoMove(v)) {
         this.vec.clear();
         return false;
       }
-      //  this.vec.clear();
 
-     
+
 
       Vector rvector=Vector.CENTER;
       Vector vector=Vector.CENTER;
@@ -85,7 +86,7 @@ public class Leap {
       }
       if (!rvector.equals(vector)&&!vector.equals(Vector.CENTER)) {
         this.vec.add(vector);
-        //    println(vec.toString());
+      //println(vec.toString());
       }
       return this.vec.size()>0;
     } 
@@ -96,7 +97,8 @@ public class Leap {
   }
   private void checkVector() {
 
-    if (tempolist.check(this.vec)) {
+    if (tempolist.check(this.vec, this.t/3*0.1)) {
+      t=0;
       this.vec.clear();
     }
   }
