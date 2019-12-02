@@ -18,21 +18,20 @@ public class Leap {
     {new Tempo(new Vector[]{Vector.DOWN, Vector.RIGHT, Vector.UP}), 
       new Tempo(new Vector[]{Vector.DOWN, Vector.LEFT, Vector.UP})}, 
     //Tempo3
-    {new Tempo( new Vector[]  {Vector.DOWN}),
-  new Tempo( new Vector[]  {Vector.DOWN,Vector.RIGHT,Vector.UP}),
-  new Tempo( new Vector[]  {Vector.DOWN,Vector.LEFT,Vector.UP}),
-  //new Vector[]{Vector.DOWN}), 
-   //   new Tempo(new Vector[]{Vector.UP, Vector.RIGHT, Vector.DOWN, Vector.RIGHT, Vector.UP}), 
-    //  new Tempo(new Vector[]{ Vector.DOWN, Vector.LEFT, Vector.UP}), 
+    {new Tempo( new Vector[]  {Vector.DOWN}), 
+      new Tempo( new Vector[]  {Vector.DOWN, Vector.RIGHT, Vector.UP}), 
+      new Tempo( new Vector[]  {Vector.DOWN, Vector.LEFT, Vector.UP}), 
     }, 
     //Tempo4
     {new Tempo(new Vector[]{Vector.DOWN}), 
-      new Tempo(new Vector[]{Vector.UP, Vector.LEFT, Vector.DOWN}), 
-      new Tempo(new Vector[]{Vector.UP, Vector.RIGHT, Vector.DOWN, Vector.RIGHT, Vector.UP}), 
+      new Tempo(new Vector[]{Vector.LEFT}), 
+      new Tempo(new Vector[]{Vector.DOWN, Vector.RIGHT, Vector.UP}), 
       new Tempo(new Vector[]{ Vector.DOWN, Vector.LEFT, Vector.UP})}
   };
   public TempoList tempolist=new TempoList(tempo[2]);
   int f=0;
+  int tf=0;
+  int t=0;
   public Leap(LeapMotion leap) {
     this.leap=leap;
   }
@@ -57,14 +56,19 @@ public class Leap {
     for (com.leapmotion.leap.Hand hand : this.controller.frame().hands()) {
       PVector v=new PVector(hand.palmVelocity().getX(), hand.palmVelocity().getY(), hand.palmVelocity().getZ());
       String frame=this.controller.frame().toString();
-      f=Integer.parseInt(frame.substring(9,frame.length()))/60;
-     // println(f/60);
+      f=Integer.parseInt(frame.substring(9, frame.length()))/60/2;
+            // println(f);
+    
+    t++;
+    println(t/3*0.1);
       if (isNoMove(v)) {
         this.vec.clear();
         return false;
       }
-     //  this.vec.clear();
-       
+      //  this.vec.clear();
+
+     
+
       Vector rvector=Vector.CENTER;
       Vector vector=Vector.CENTER;
       if (this.vec.size()!=0) {
@@ -81,7 +85,7 @@ public class Leap {
       }
       if (!rvector.equals(vector)&&!vector.equals(Vector.CENTER)) {
         this.vec.add(vector);
-          println(vec.toString());
+        //    println(vec.toString());
       }
       return this.vec.size()>0;
     } 
@@ -91,7 +95,10 @@ public class Leap {
     checkVector();
   }
   private void checkVector() {
-    tempolist.check(this.vec);
+
+    if (tempolist.check(this.vec)) {
+      this.vec.clear();
+    }
   }
   public void changeTempo(int n) {
     this.tempolist=new TempoList(this.tempo[n]);

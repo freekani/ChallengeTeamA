@@ -4,7 +4,6 @@ public class Tempo {
   private List<Vector> vector=new ArrayList<Vector>(); 
   private List<Float> speedList=new ArrayList<Float>();
   public Tempo() {
-
   }
   public Tempo(Float[] speed, Vector... v) {
     this.vector=Arrays.asList(v);
@@ -24,7 +23,7 @@ public class Tempo {
   public int size() {
     return this.vector.size();
   }
-  public void clear(){
+  public void clear() {
     this.vector.clear();
     this.speedList.clear();
   }
@@ -36,7 +35,7 @@ public class Tempo {
         sum+=s;
         println(speedList);
       }
-     mean=(int)(sum/this.speedList.size());
+      mean=(int)(sum/this.speedList.size());
       //println(sum);
     }
     return mean;
@@ -44,7 +43,7 @@ public class Tempo {
   public Vector getVector(int index) {
     return this.vector.get(index);
   }
-  
+
   public Float getSpeed(int index) {
     return this.speedList.get(index);
   }
@@ -68,7 +67,7 @@ public class Tempo {
   } 
   public String toString() {
     String str="";
-  //  str+="size = "+this.size()+" speed = "+this.getSpeed()+"\n";
+    //  str+="size = "+this.size()+" speed = "+this.getSpeed()+"\n";
     for (int i=0; i<this.vector.size(); i++) {
       Vector v=(Vector)this.vector.get(i);
       switch(v) {
@@ -103,16 +102,16 @@ public class Tempo {
     }
     return str;
   }
-    public boolean equals(Tempo tempo) {
+  public boolean equals(Tempo tempo) {
     if (this.size()!=tempo.size())return false;
     for (int i=0; i<this.size(); i++) {
       if (!this.getVector(i).equals(tempo.getVector(i)))return false;
     }
     return true;
   }
-  public void copy(Tempo tempo){
+  public void copy(Tempo tempo) {
     List<Vector> v=new ArrayList<Vector>(); 
-    for(int i=0;i<tempo.size();i++){
+    for (int i=0; i<tempo.size(); i++) {
       v.add(tempo.getVector(i));
     }
     this.vector=v;
@@ -125,12 +124,14 @@ public class TempoList {
     this.num=0;
     this.list=Arrays.asList(tempo);
   }
-  public void check(Tempo t) {
+  public boolean check(Tempo t) {
     Tempo tempo=this.list.get(this.num);
     if (tempo.check(t)) {
-     println(++this.num);
+      println(++this.num);
+     // osc.sendMessage("test", this.num);
       this.num%=this.list.size();
-      
+      return true;
     }
+    return false;
   }
 }
