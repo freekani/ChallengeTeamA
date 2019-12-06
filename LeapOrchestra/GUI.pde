@@ -81,12 +81,12 @@ public class GUI {
       .setFont(font)
       .align(CENTER, CENTER, CENTER, CENTER);
     //ButtonBar
-          this.cp5.addButtonBar("bar")
+    this.cp5.addButtonBar("bar")
       .setPosition(0, 0)
       .setFont(fontMsg)
       .setSize(width, 30)
 
-      .addItems(split("BUTTON 2 3 4", " "))
+      .addItems(split("OPTION TEMPO2 TEMPO3 TEMPO4", " "))
       ;
 
     this.chart = this.cp5.addChart("dataflow")
@@ -108,7 +108,6 @@ public class GUI {
     pointer();
     if (this.PLAY.getValue()==1)chart.push("incoming", (sin(frameCount*0.1)*5));
     else chart.push("incoming", random(-0.1, 0.1));
-
   }
   void pointer() {
     if (!lp.isExist())return;
@@ -195,7 +194,7 @@ public void bar(int n) {
   switch(n) {
   case 0:
     gui.show();
-    writeMsg("Button");
+    writeMsg("OPTION");
     break;
   case 1:
     gui.hide();
@@ -203,17 +202,17 @@ public void bar(int n) {
     lp.changeTempo(2);
     break;
   case 2:
-  gui.hide();
+    gui.hide();
     writeMsg("TEMPO3");
-   lp.changeTempo(3);
-  break;
-  
+    lp.changeTempo(3);
+    break;
+
   case 3:
-  gui.hide();
+    gui.hide();
     writeMsg("TEMPO4");
-lp.changeTempo(4);
-  break;
-  
+    lp.changeTempo(4);
+    break;
+
   default:
     break;
   }

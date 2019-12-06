@@ -138,26 +138,28 @@ public class TempoList {
     return false;
   }
   public boolean check(Tempo t, float b) {
-    this.bpm.add(this.num==0?0:60/b);
-
     Tempo tempo=this.list.get(this.num);
     if (tempo.check(t)) {
-      println(++this.num, this.bpm.get(this.num));
-
+      //this.bpm.add(this.num==0?0:60/b);
+      this.bpm.add(60/b);
+      println(this.num+1, this.bpm.get(this.num));
+      this.num++;
       this.num%=this.list.size();
       if (this.num==0) {
-        println(this.num, this.bpm.get(this.num), this.getBpm());
-        // osc.sendMessage("test", this.num,this.getBpm());
+        println("=================="+"BPM:"+ this.getBpm()+"==================");
+        //osc.sendMessage("TEMPO"+this.list.size(), this.getBpm());
+        this.bpm.clear();
       }
+
       return true;
     }
     return false;
   }
   public int getBpm() {
     if (this.bpm.size()==0)return 0;
-
     int sum=0;
     for (float b : this.bpm)sum+=b;
-    return sum/this.bpm.size()-1;
+//    return sum/(this.bpm.size()-1);
+    return sum/this.bpm.size();
   }
 }

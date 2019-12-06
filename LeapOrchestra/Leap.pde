@@ -12,6 +12,8 @@ public class Leap {
   private Tempo vec=new Tempo();
   private com.leapmotion.leap.Controller controller = new com.leapmotion.leap.Controller();
   private float smallestV=500;
+  private int t=0;
+
 
   private Tempo[][] tempo={{}, {}, 
     //Tempo2
@@ -29,9 +31,6 @@ public class Leap {
       new Tempo(new Vector[]{ Vector.DOWN, Vector.LEFT, Vector.UP})}
   };
   public TempoList tempolist=new TempoList(tempo[2]);
-  int f=0;
-  int tf=0;
-  int t=0;
   public Leap(LeapMotion leap) {
     this.leap=leap;
   }
@@ -39,6 +38,7 @@ public class Leap {
   //処理
   public void update() {
     HandDraw();
+    resetT();
     if (gui.getController("bar").getValue()!=0) {
       if (think()) {
         move();
@@ -59,10 +59,10 @@ public class Leap {
       //f=Integer.parseInt(frame.substring(9, frame.length()))/60/2;
       // println(f);
 
-      t++;
+      this.t++;
       // println(t/3*0.1);    //0.1s
-      
-      
+
+
       if (isNoMove(v)) {
         this.vec.clear();
         return false;
@@ -86,19 +86,30 @@ public class Leap {
       }
       if (!rvector.equals(vector)&&!vector.equals(Vector.CENTER)) {
         this.vec.add(vector);
-      //println(vec.toString());
+        //println(vec.toString());
       }
       return this.vec.size()>0;
     } 
     return false;
   }
   private void move() {
+
     checkVector();
+  }
+  private void resetT() {
+    if (!change&&!getClick()) {
+      //println(t);
+      this.change=true;
+    } else if (!lp.getClick()) {
+      this.t=0;
+      println("reset t");
+      this.change=false;
+    }
   }
   private void checkVector() {
 
     if (tempolist.check(this.vec, this.t/3*0.1)) {
-      t=0;
+      this.t=0;
       this.vec.clear();
     }
   }
