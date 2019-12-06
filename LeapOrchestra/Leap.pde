@@ -4,18 +4,19 @@ enum Vector {
     LD, DOWN, RD
 }
 
-public class Leap {
+class Leap {
 
-  private LeapMotion leap;
+  LeapMotion leap;
 
-  private boolean change=false;
-  private Tempo vec=new Tempo();
-  private com.leapmotion.leap.Controller controller = new com.leapmotion.leap.Controller();
-  private float smallestV=500;
-  private int t=0;
+  boolean change=false;
+  Tempo vec=new Tempo();
+  com.leapmotion.leap.Controller controller = new com.leapmotion.leap.Controller();
+  int smallestV=250;
+  int biggestV=500; 
+  int t=0;
 
 
-  private Tempo[][] tempo={{}, {}, 
+  Tempo[][] tempo={{}, {}, 
     //Tempo2
     {new Tempo(new Vector[]{Vector.DOWN, Vector.RIGHT, Vector.UP}), 
       new Tempo(new Vector[]{Vector.DOWN, Vector.LEFT, Vector.UP})}, 
@@ -30,18 +31,18 @@ public class Leap {
       new Tempo(new Vector[]{Vector.DOWN, Vector.RIGHT, Vector.UP}), 
       new Tempo(new Vector[]{ Vector.DOWN, Vector.LEFT, Vector.UP})}
   };
-  public TempoList tempolist=new TempoList(tempo[2]);
-  public Leap(LeapMotion leap) {
+  TempoList tempolist=new TempoList(tempo[2]);
+  Leap(LeapMotion leap) {
     this.leap=leap;
   }
 
   //処理
-  public void update() {
+  void update() {
     HandDraw();
     resetT();
     if (gui.getController("bar").getValue()!=0) {
       if (think()) {
-        move();
+       // move();
       }
     }
     if (gui.getFlag()&&CheckStop()) {
@@ -51,37 +52,33 @@ public class Leap {
     }
   }
 
-  private boolean think() {
+  boolean think() {
 
     for (com.leapmotion.leap.Hand hand : this.controller.frame().hands()) {
       PVector v=new PVector(hand.palmVelocity().getX(), hand.palmVelocity().getY(), hand.palmVelocity().getZ());
       // String frame=this.controller.frame().toString();
       //f=Integer.parseInt(frame.substring(9, frame.length()))/60/2;
       // println(f);
-
       this.t++;
       // println(t/3*0.1);    //0.1s
-
 
       if (isNoMove(v)) {
         this.vec.clear();
         return false;
       }
 
-
-
       Vector rvector=Vector.CENTER;
       Vector vector=Vector.CENTER;
       if (this.vec.size()!=0) {
-        rvector=this.vec.getVector(this.vec.size()-1);
+        rvector=this.vec.get(this.vec.size()-1);
       }
-      if (v.x<-500) {
+      if (v.x<-this.biggestV) {
         vector=Vector.LEFT;
-      } else if (v.x>500) {
+      } else if (v.x>this.biggestV) {
         vector=Vector.RIGHT;
-      } else if (v.y>500/2) {
+      } else if (v.y>this.biggestV/2) {
         vector=Vector.UP;
-      } else if (v.y<-500/2) {
+      } else if (v.y<-this.biggestV/2) {
         vector=Vector.DOWN;
       }
       if (!rvector.equals(vector)&&!vector.equals(Vector.CENTER)) {
@@ -92,11 +89,10 @@ public class Leap {
     } 
     return false;
   }
-  private void move() {
-
+  void move() {
     checkVector();
   }
-  private void resetT() {
+  void resetT() {
     if (!change&&!getClick()) {
       //println(t);
       this.change=true;
@@ -106,21 +102,21 @@ public class Leap {
       this.change=false;
     }
   }
-  private void checkVector() {
+  void checkVector() {
 
     if (tempolist.check(this.vec, this.t/3*0.1)) {
       this.t=0;
       this.vec.clear();
     }
   }
-  public void changeTempo(int n) {
+  void changeTempo(int n) {
     this.tempolist=new TempoList(this.tempo[n]);
   }
   //no move
-  private boolean isNoMove(PVector v) {
-    return abs(v.x*2)<smallestV&&abs(v.y*2)<smallestV&&abs(v.z*2)<smallestV;
+  boolean isNoMove(PVector v) {
+    return abs(v.x)<smallestV&&abs(v.y)<smallestV&&abs(v.z)<smallestV;
   }
-  private void HandDraw() {
+  void HandDraw() {
     for (de.voidplus.leapmotion.Hand hand : this.leap.getHands ()) {
       for (de.voidplus.leapmotion.Finger finger : hand.getFingers()) {
         strokeWeight(10);
@@ -129,7 +125,7 @@ public class Leap {
       }
     }
   }
-  public boolean CheckStop() {
+  boolean CheckStop() {
     if (this.leap.getHands().size()!=2)return false;
     int n=0;
     for (de.voidplus.leapmotion.Hand hand : this.leap.getHands ()) {
@@ -137,7 +133,7 @@ public class Leap {
     }
     return n==2;
   }
-  public boolean CheckStart() {
+  boolean CheckStart() {
     if (this.leap.getHands().size()!=2)return false;
     int n=0;
     for (de.voidplus.leapmotion.Hand hand : this.leap.getHands ()) {
@@ -145,23 +141,23 @@ public class Leap {
     }
     return n==0;
   }
-  public  boolean isExist() {
+  boolean isExist() {
     return this.leap.getHands().size()>0;
   }
-  public boolean isRight() {
+  boolean isRight() {
     for (de.voidplus.leapmotion.Hand hand : this.leap.getHands ()) {
       return hand.isRight();
     }
     return false;
   }
-  public PVector getPos() {
+  PVector getPos() {
     for (de.voidplus.leapmotion.Hand hand : this.leap.getHands ()) {
       return hand.isRight()?hand.getPosition():new PVector(width/2, height/2);
     }
     return null;
   }
 
-  public boolean getClick() {
+  boolean getClick() {
     for (de.voidplus.leapmotion.Hand hand : this.leap.getHands ()) {
       if (hand.isRight()) {
         String finger="";
@@ -171,26 +167,26 @@ public class Leap {
     }
     return false;
   }
-  public boolean CheckChange() {
+  boolean CheckChange() {
     return !change&&getClick();
   }
-  public boolean getChange() {
+  boolean getChange() {
     return this.change;
   }
-  public void setChange(boolean change) {
+  void setChange(boolean change) {
     this.change=change;
   }
 }
 
-public  void leapOnInit() {
+void leapOnInit() {
   println("Leap Motion Init");
 }
-public  void leapOnConnect() {
+void leapOnConnect() {
   println("Leap Motion Connect");
 }
-public  void leapOnDisconnect() {
+void leapOnDisconnect() {
   println("Leap Motion Disconnect");
 }
-public  void leapOnExit() {
+void leapOnExit() {
   println("Leap Motion Exit");
 }

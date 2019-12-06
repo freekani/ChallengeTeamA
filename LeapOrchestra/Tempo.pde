@@ -1,59 +1,31 @@
 import java.util.Arrays;
 import java.util.List;
-public class Tempo {
-  private List<Vector> vector=new ArrayList<Vector>(); 
-  private List<Float> speedList=new ArrayList<Float>();
-  public Tempo() {
+class Tempo {
+  List<Vector> vector=new ArrayList<Vector>(); 
+  Tempo() {
   }
-  public Tempo(Float[] speed, Vector... v) {
+  Tempo(Vector... v) {
     this.vector=Arrays.asList(v);
-    this.speedList=Arrays.asList(speed);
-  }
-  public Tempo(Vector... v) {
-    this.vector=Arrays.asList(v);
-    this.speedList.add(0.0);
   }  
-  public void add(Vector v, float speed) {
-    this.vector.add(v);
-    this.speedList.add(speed);
+  void add(Vector v) {
+    this.add(v);
   }
-  public void add(Vector v) {
-    this.add(v, 0.0);
-  }
-  public int size() {
+  int size() {
     return this.vector.size();
   }
-  public void clear() {
+  void clear() {
     this.vector.clear();
-    this.speedList.clear();
   }
-  public int getSpeed() {
-    int mean=0;
-    if (this.speedList.size()>0) {
-      float sum=0;
-      for (float s : speedList) {
-        sum+=s;
-        println(speedList);
-      }
-      mean=(int)(sum/this.speedList.size());
-      //println(sum);
-    }
-    return mean;
-  }
-  public Vector getVector(int index) {
+  Vector get(int index) {
     return this.vector.get(index);
   }
-
-  public Float getSpeed(int index) {
-    return this.speedList.get(index);
-  }
-  public boolean check(Tempo t) {
+  boolean check(Tempo t) {
     if (t.size()>=this.vector.size()) {
       for (int i=0; i<t.size()-this.vector.size()+1; i++) {
         boolean[] checkTempo=new boolean[this.vector.size()]; 
         boolean check=true;
         for (int j=0; j<this.vector.size(); j++) {
-          if (this.vector.get(j).equals(t.getVector(i+j))) {
+          if (this.vector.get(j).equals(t.get(i+j))) {
             checkTempo[j]=true;
           }
         }
@@ -65,9 +37,8 @@ public class Tempo {
     }
     return false;
   } 
-  public String toString() {
+  String toString() {
     String str="";
-    //  str+="size = "+this.size()+" speed = "+this.getSpeed()+"\n";
     for (int i=0; i<this.vector.size(); i++) {
       Vector v=(Vector)this.vector.get(i);
       switch(v) {
@@ -102,32 +73,32 @@ public class Tempo {
     }
     return str;
   }
-  public boolean equals(Tempo tempo) {
+  boolean equals(Tempo tempo) {
     if (this.size()!=tempo.size())return false;
     for (int i=0; i<this.size(); i++) {
-      if (!this.getVector(i).equals(tempo.getVector(i)))return false;
+      if (!this.get(i).equals(tempo.get(i)))return false;
     }
     return true;
   }
-  public void copy(Tempo tempo) {
+  void copy(Tempo tempo) {
     List<Vector> v=new ArrayList<Vector>(); 
     for (int i=0; i<tempo.size(); i++) {
-      v.add(tempo.getVector(i));
+      v.add(tempo.get(i));
     }
     this.vector=v;
   }
 }
-public class TempoList {
+class TempoList {
 
-  private int num;
-  private List<Tempo> list;
-  private List<Float> bpm;
-  public TempoList(Tempo... tempo) {
+  int num;
+  List<Tempo> list;
+  List<Float> bpm;
+  TempoList(Tempo... tempo) {
     this.num=0;
     this.list=Arrays.asList(tempo);
     this.bpm=new ArrayList<Float>();
   }
-  public boolean check(Tempo t) {
+  boolean check(Tempo t) {
     Tempo tempo=this.list.get(this.num);
     if (tempo.check(t)) {
       println(++this.num);
@@ -137,7 +108,7 @@ public class TempoList {
     }
     return false;
   }
-  public boolean check(Tempo t, float b) {
+  boolean check(Tempo t, float b) {
     Tempo tempo=this.list.get(this.num);
     if (tempo.check(t)) {
       //this.bpm.add(this.num==0?0:60/b);
@@ -155,11 +126,11 @@ public class TempoList {
     }
     return false;
   }
-  public int getBpm() {
+  int getBpm() {
     if (this.bpm.size()==0)return 0;
     int sum=0;
     for (float b : this.bpm)sum+=b;
-//    return sum/(this.bpm.size()-1);
+    //return sum/(this.bpm.size()-1);
     return sum/this.bpm.size();
   }
 }
