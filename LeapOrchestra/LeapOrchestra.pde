@@ -16,19 +16,22 @@ Leap lp;
 
 void setup() {
   size(960, 540);
-  frameRate(30);
+frameRate(30);
   //OSC
   //osc=new OSC(new OscP5(this, 8000) , new NetAddress("169.254.255.255", 4559));
-  osc=new OSC(new OscP5(this, 8000), new NetAddress("169.254.207.157", 4559));
+  osc=new OSC(new OscP5(this, 8000) , new NetAddress("169.254.207.157", 4559));
   //GUI
   gui=new GUI(new ControlP5(this));
   //LeapMotion
+  //  comleap=new ComLeap();
   lp=new Leap(new LeapMotion(this));
 }
 
 void draw() {
   background(0, 50, 0);
   gui.update();
+
+  
 }
 //メッセージの表示
 void writeMsg(String s) {

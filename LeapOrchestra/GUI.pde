@@ -1,14 +1,15 @@
-class GUI {
-  ControlP5 cp5;
-  Toggle PLAY;
-  Textarea messageBox;
-  Println console;
-  Chart chart;
-  GUI(ControlP5 cp5) {
+//*
+public class GUI {
+  private ControlP5 cp5;
+  private Toggle PLAY;
+  private Textarea messageBox;
+  private Println console;
+  private Chart chart;
+  public GUI(ControlP5 cp5) {
     this.cp5=cp5;
     this.ini();
   }
-  void ini() {
+  private void ini() {
     //font
     PFont font = createFont("consolas", 32);
     PFont fontMsg=createFont("consolas", 20);
@@ -101,7 +102,7 @@ class GUI {
     this.chart.addDataSet("incoming");
     this.chart.setData("incoming", new float[100]);
   }
-  void update() {
+  public void update() {
     this.console=this.cp5.addConsole(this.messageBox);
 
     pointer();
@@ -129,13 +130,13 @@ class GUI {
       lp.setChange(false);
     }
   }
-  Println getConsole() {
+  public Println getConsole() {
     return this.console;
   }
-  controlP5.Controller getController(String name) {
+  public controlP5.Controller getController(String name) {
     return  this.cp5.getController(name);
   }
-  void show() {
+  public void show() {
     this.cp5.getController("PLAY").show();
     this.cp5.getController("RESET").show();
     String[] msg={"MUSICNUM", "VOLUME", "SCALE", "TIME"};
@@ -147,7 +148,7 @@ class GUI {
       }
     }
   }
-  void hide() {
+  public void hide() {
     this.cp5.getController("PLAY").hide();
     this.cp5.getController("RESET").hide();
     String[] msg={"MUSICNUM", "VOLUME", "SCALE", "TIME"};
@@ -159,22 +160,22 @@ class GUI {
       }
     }
   }
-  boolean getFlag() {
+  public boolean getFlag() {
     return gui.getController("PLAY").getValue()==1;
   }
 }
-void CLEAR() {
+public void CLEAR() {
   gui.getConsole().clear();
 }
-void PLAY(boolean state) {
+public void PLAY(boolean state) {
   osc.sendMessage("FLAG", state?"START":"STOP");
 }
-void RESET() {
+public void RESET() {
   gui.getController("PLAY").setValue(0);
   osc.sendMessage("FLAG", "RESET");
 }
 
-void controlEvent(ControlEvent theEvent) {
+public void controlEvent(ControlEvent theEvent) {
   String[] cp5MSG={"MUSICNUM", "VOLUME", "SCALE", "TIME"};
   if (theEvent.isAssignableFrom(Bang.class)) {
     for (int i=0; i<cp5MSG.length; i++) {
@@ -189,7 +190,7 @@ void controlEvent(ControlEvent theEvent) {
   }
 }
 
-void bar(int n) {
+public void bar(int n) {
   switch(n) {
   case 0:
     gui.show();
@@ -216,3 +217,4 @@ void bar(int n) {
     break;
   }
 }
+//*/
