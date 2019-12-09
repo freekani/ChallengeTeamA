@@ -46,8 +46,8 @@ void Init_GUI() {
 void input(String msg) {
   if (isNum(msg)) {
     int BPM=Integer.parseInt(msg);
-    if (BPM<0||BPM>300) {
-      println("Please enter the correct value");
+    if (BPM<=0||BPM>300) {
+      println("0<BPM<=300");
     }else{
       sendMessage("BPM",BPM);
     }
