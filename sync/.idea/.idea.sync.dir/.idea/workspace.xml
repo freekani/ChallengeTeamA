@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="415f1695-8bd8-4c45-bf59-45655d903c61" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.vs/ChallengeTeamA/v16/.suo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.vs/ChallengeTeamA/v16/Server/sqlite3/db.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.vs/ChallengeTeamA/v16/Server/sqlite3/storage.ide" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.vs/ProjectSettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.vs/VSWorkspaceState.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.vs/slnx.sqlite" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../retest/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../retest/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../retest/ReceiveTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../retest/ReceiveTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../retest/bin/Debug/netcoreapp2.2/retest.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../retest/bin/Debug/netcoreapp2.2/retest.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../retest/bin/Debug/netcoreapp2.2/retest.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../retest/bin/Debug/netcoreapp2.2/retest.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../retest/bin/Debug/netcoreapp2.2/retest.runtimeconfig.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/../retest/bin/Debug/netcoreapp2.2/retest.runtimeconfig.dev.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../retest/obj/Debug/netcoreapp2.2/retest.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../retest/obj/Debug/netcoreapp2.2/retest.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../retest/obj/Debug/netcoreapp2.2/retest.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../retest/obj/Debug/netcoreapp2.2/retest.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../retest/obj/Debug/netcoreapp2.2/retest.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../retest/obj/Debug/netcoreapp2.2/retest.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../retest/obj/Debug/netcoreapp2.2/retest.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../retest/obj/Debug/netcoreapp2.2/retest.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../retest/obj/Debug/netcoreapp2.2/retest.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../retest/obj/Debug/netcoreapp2.2/retest.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../retest/obj/Debug/netcoreapp2.2/retest.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../retest/obj/Debug/netcoreapp2.2/retest.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../retest/obj/Debug/netcoreapp2.2/retest.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../retest/obj/Debug/netcoreapp2.2/retest.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../retest/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../retest/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../retest/obj/retest.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../retest/obj/retest.csproj.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../retest/obj/retest.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../retest/obj/retest.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../retest/obj/retest.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/../retest/obj/retest.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.2/sync.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp2.2/sync.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.2/sync.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp2.2/sync.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.2/sync.runtimeconfig.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp2.2/sync.runtimeconfig.dev.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/sync.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/sync.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/sync.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/sync.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/sync.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/sync.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/sync.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/sync.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/sync.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/sync.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/sync.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/sync.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/sync.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/sync.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/sync.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/sync.csproj.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/sync.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/sync.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/sync.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/obj/sync.csproj.nuget.g.props" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Program.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+              <folding>
+                <marker date="1562039197217" expanded="false" signature="6:99" ph="..." />
+                <marker date="1562039197217" expanded="true" signature="115:1104" ph="{...}" />
+                <marker date="1562039197217" expanded="true" signature="135:1102" ph="{...}" />
+                <marker date="1562039197217" expanded="true" signature="181:1096" ph="{...}" />
+                <marker date="1562039197217" expanded="true" signature="464:634" ph="/* int number = int.Parse(Console.ReadLine()); ... */" />
+                <marker date="1562039197217" expanded="true" signature="678:1017" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Program.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Program.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/.idea.sync.dir/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/.idea.sync.dir/.idea/indexLayout.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-12" />
+    <option name="width" value="981" />
+    <option name="height" value="1032" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="sync" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-all-files" value="false" />
+      </pane>
+      <pane id="FileSystemExplorer" />
+      <pane id="AssemblyExplorer" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Default" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/bin/Debug/netcoreapp2.2/sync.dll" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/sync.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value=".NETCoreApp,Version=v2.2" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="415f1695-8bd8-4c45-bf59-45655d903c61" name="Default Changelist" comment="" />
+      <created>1561077224252</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1561077224252</updated>
+      <workItem from="1561077225952" duration="3608000" />
+      <workItem from="1561431274247" duration="28000" />
+      <workItem from="1561683019133" duration="7329000" />
+      <workItem from="1562033986672" duration="4867000" />
+      <workItem from="1562640410145" duration="1802000" />
+      <workItem from="1563628817158" duration="623000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="18257000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20226537" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2963605" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="NuGet" order="7" />
+      <window_info anchor="bottom" id="Performance Profiler" order="8" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info anchor="bottom" id="Unit Tests" order="12" />
+      <window_info anchor="bottom" id="Terminal" order="13" />
+      <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
+      <window_info anchor="bottom" id="Build" order="15" weight="0.32928944" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Errors In Solution" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="5" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Program.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding>
+            <marker date="1562039197217" expanded="false" signature="6:99" ph="..." />
+            <marker date="1562039197217" expanded="true" signature="115:1104" ph="{...}" />
+            <marker date="1562039197217" expanded="true" signature="135:1102" ph="{...}" />
+            <marker date="1562039197217" expanded="true" signature="181:1096" ph="{...}" />
+            <marker date="1562039197217" expanded="true" signature="464:634" ph="/* int number = int.Parse(Console.ReadLine()); ... */" />
+            <marker date="1562039197217" expanded="true" signature="678:1017" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

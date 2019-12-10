@@ -686,27 +686,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\yuuki\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Users\\kasum\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\yuuki\\Source\\Repos\\freekani\\ChallengeTeamA\\sync\\sync.csproj",
+      "projectUniqueName": "C:\\Users\\kasum\\MyWorkSpace\\challenge\\ChallengeTeamA\\sync\\sync.csproj",
       "projectName": "sync",
-      "projectPath": "C:\\Users\\yuuki\\Source\\Repos\\freekani\\ChallengeTeamA\\sync\\sync.csproj",
-      "packagesPath": "C:\\Users\\yuuki\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yuuki\\Source\\Repos\\freekani\\ChallengeTeamA\\sync\\obj\\",
+      "projectPath": "C:\\Users\\kasum\\MyWorkSpace\\challenge\\ChallengeTeamA\\sync\\sync.csproj",
+      "packagesPath": "C:\\Users\\kasum\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kasum\\MyWorkSpace\\challenge\\ChallengeTeamA\\sync\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\yuuki\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\kasum\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
