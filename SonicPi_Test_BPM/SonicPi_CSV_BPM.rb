@@ -10,7 +10,7 @@ note = [ [0,:C1,:D1,:E1,:F1,:G1,:A1,:B1],
 step=[0,1]
 octave=[0,1]
 duration=[0,1]
-BPM=240
+BPM=120
 #------------------------------------------------------------
 #load_CSV
 #------------------------------------------------------------
@@ -47,10 +47,10 @@ end
 #------------------------------------------------------------
 
 define :play_MUSIC do
-  use_bpm BPM
   n=0
   print "--------------PLAY START--------------"
   while (n<step.length)
+    use_bpm BPM
     play note[octave[n]][step[n]],release: duration[n]*0.5
     sleep duration[n]*0.5
     n=n+1

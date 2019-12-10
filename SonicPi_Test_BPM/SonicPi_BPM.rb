@@ -13,12 +13,12 @@ loop do
   use_bpm BPM
   print "BPM = ",BPM
   use_synth :prophet
-  play :C4 release: 0.5
+  play :C4, release: 0.5
   sleep 0.5
-  play :E4 release: 0.5
+  play :E4, release: 0.5
   sleep 0.5
-  play :G4 release: 0.5
+  play :G4, release: 0.5
   sleep 0.5
-  play :B4 release: 0.5
+  play :B4, release: 0.5
   sleep 0.5
 end
