@@ -36,12 +36,13 @@ end
 #------------------------------------------------------------
 #play_MUSIC
 #------------------------------------------------------------
+use_bpm 240
 define :play_MUSIC do
   n=0
   print "--------------PLAY START--------------"
   while (n<data1.length)
-    play notes[3+data3[n]][data1[n]],release: data2[n]
-    sleep data2[n]
+    play notes[data2[n]][data1[n]],release: data3[n]*0.5
+    sleep data3[n]*0.5
     n=n+1
   end
   print "---------------PLAY END---------------"

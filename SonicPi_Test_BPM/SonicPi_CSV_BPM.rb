@@ -10,9 +10,7 @@ notes = [ [0,:C1,:D1,:E1,:F1,:G1,:A1,:B1],
 data1=[0,1]
 data2=[0,1]
 data3=[0,1]
-BPM=120
-SLEEPTIME=0.5
-
+BPM=240
 #------------------------------------------------------------
 #load_CSV
 #------------------------------------------------------------
@@ -42,9 +40,7 @@ live_loop :load_BPM do
   use_real_time
   msg = sync "/osc/BPM"
   BPM=msg[0]
-  SLEEPTIME=60/BPM
   print "LOAD_BPM",BPM
-  print "LOAD_SLEEPTIME",SLEEPTIME
 end
 #------------------------------------------------------------
 #play_MUSIC
@@ -54,8 +50,8 @@ define :play_MUSIC do
   print "--------------PLAY START--------------"
   while (n<data1.length)
     use_bpm BPM
-    play notes[3+data3[n]][data1[n]],release: SLEEPTIME*data2[n]
-    sleep SLEEPTIME*data2[n]
+    play notes[data2[n]][data1[n]],release: data3[n]*0.5
+    sleep data3[n]*0.5
     n=n+1
   end
   print "---------------PLAY END---------------"
