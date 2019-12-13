@@ -104,14 +104,13 @@ class GestureList {
   boolean check(Gesture g, float b) {
     Gesture gesture=this.list.get(this.num);
     if (gesture.check(g)) {
-      //this.bpm.add(this.num==0?0:60/b);
-      this.bpm.add(60/b);
+      this.bpm.add(this.num==0?0:60/b);
       println(this.num+1, this.bpm.get(this.num));
       this.num++;
       this.num%=this.list.size();
       if (this.num==0) {
         println("=================="+"BPM:"+ this.getBpm()+"==================");
-        //osc.sendMessage("TEMPO"+this.list.size(), this.getBpm());
+        osc.sendMessage("BPM",this.getBpm());
         this.bpm.clear();
       }
       return true;
@@ -122,7 +121,6 @@ class GestureList {
     if (this.bpm.size()==0)return 0;
     int sum=0;
     for (float b : this.bpm)sum+=b;
-    //    return sum/(this.bpm.size()-1);
-    return sum/this.bpm.size();
+    return sum/(this.bpm.size()-1);
   }
 }

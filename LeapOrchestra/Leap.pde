@@ -43,9 +43,6 @@ class Leap {
     //手の描画
     HandDraw();
 
-    //時間tのリセット
-    resetT();
-
     //ジェスチャー認識
     if (gui.getController("bar").getValue()!=0) {
       if (think())move();
@@ -94,17 +91,6 @@ class Leap {
   }
   void move() {
     checkGesture();
-  }
-  //時間tのリセット
-  void resetT() {
-    if (!change&&!getClick()) {
-      //println(t);
-      this.change=true;
-    } else if (!lp.getClick()) {
-      this.t=0;
-      println("reset t");
-      this.change=false;
-    }
   }
   //ジェスチャー認識
   void checkGesture() {
