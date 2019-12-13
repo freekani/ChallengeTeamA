@@ -1,5 +1,5 @@
 require "csv"
-csvfile='C:\Users\cccqc\OneDrive\Documents\GitHub\ChallengeTeamA\player\mario.csv'
+csvfile='C:\Users\cccqc\OneDrive\Documents\GitHub\ChallengeTeamA\SonicPi_Test\mario.csv'
 note = [ [0,:C1,:D1,:E1,:F1,:G1,:A1,:B1],
          [0,:C2,:D1,:E2,:F2,:G2,:A2,:B2],
          [0,:C3,:D3,:E3,:F3,:G3,:A3,:B3],
