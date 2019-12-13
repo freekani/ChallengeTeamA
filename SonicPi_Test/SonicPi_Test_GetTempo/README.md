@@ -1,5 +1,5 @@
 # 確認方法
-## Python
+## 1. Python
 1. Enterで`/osc/TEMPO`に送信
 ### 実行例
 ```
@@ -15,3 +15,5 @@ Please enter:
 BPM 240
 /BPM [240]
 ```
+## 2. Processing(LeapMotion付)
+略
