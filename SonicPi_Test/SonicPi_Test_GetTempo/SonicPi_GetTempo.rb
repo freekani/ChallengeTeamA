@@ -55,12 +55,14 @@ end
 #play_MUSIC
 #------------------------------------------------------------
 
-define :play_MUSIC do
+define :play_MUSIC  do
   use_bpm BPM
+  print n
   play note[octave[n]][step[n]],release: duration[n]*0.5
   sleep duration[n]*0.5
-  (n<step.length)? n+=1 : n=0
+  (n<step.length-1)? n+=1 : n=0
 end
 
 load_CSV
+
 

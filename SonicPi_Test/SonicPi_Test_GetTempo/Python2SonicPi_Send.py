@@ -36,7 +36,6 @@ client = udp_client.UDPClient(IP, PORT)
 while 1:
 	print ("Please enter:")
 	command=input().split()
-	print(len(command))
 	#SendBPM
 	if len(command)!=0:
 		if command[0]=="BPM" or command[0]=="bpm":
