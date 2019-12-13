@@ -1,4 +1,5 @@
 # change.xmlからresult.csvに変更
+- 小節情報の追加
 
 ### 変更結果：
 
