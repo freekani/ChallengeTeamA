@@ -101,6 +101,7 @@ Before_a = 1.0
 interval = 10
 
 client = udp_client.UDPClient(IP, PORT)
+print('start!')
 while 1:
     ax, ay, az = getAccel()
     #print ('x={0:4.3f},   y={1:4.3f},   z={2:4.3f},' .format(ax, ay, az))
