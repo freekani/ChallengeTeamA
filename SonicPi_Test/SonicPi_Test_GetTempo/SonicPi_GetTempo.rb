@@ -1,5 +1,5 @@
 require "csv"
-csvfile='C:\Users\cccqc\OneDrive\Documents\GitHub\ChallengeTeamA\SonicPi_Test\mario.csv'
+csvfile='C:\Users\cccqc\OneDrive\Documents\GitHub\ChallengeTeamA\SonicPi_Test\result.csv'
 note = [ [0,:C1,:D1,:E1,:F1,:G1,:A1,:B1],
          [0,:C2,:D1,:E2,:F2,:G2,:A2,:B2],
          [0,:C3,:D3,:E3,:F3,:G3,:A3,:B3],
@@ -57,9 +57,11 @@ end
 #load_TEMPO
 live_loop :load_Tempo do
   use_real_time
-  msg = sync "/osc/TEMPO"
+  msg = sync "/osc/command"
   #1îèÇ≈
   t+=1
+  #play_MUSIC
+  
 end
 
 #------------------------------------------------------------
@@ -69,10 +71,11 @@ end
 define :play_MUSIC  do
   use_bpm BPM
   print n+1
-  if step[n]!=0
-    play note[octave[n]][step[n]],release: duration[n]*0.5
-    sleep duration[n]*0.5
-  end
+  print 60.to_f/BPM
+  #if step[n]!=0
+  play note[octave[n]][step[n]],release: type[n]*4
+  sleep type[n]*4
+  #end
   (n<step.length-1)? n+=1 : n=0
   
   
@@ -82,13 +85,13 @@ end
 load_CSV
 #main
 live_loop :guit do
-  print t
+  #print t
   
   while t>0
     
     t-=1
     i=0
-    while i<1
+    while i<0.25
       i+=type[n]
       play_MUSIC
     end
