@@ -6,7 +6,7 @@ from time import sleep
 from pythonosc import udp_client
 from pythonosc.osc_message_builder import OscMessageBuilder
 
-IP = '192.168.0.20'
+IP = '192.168.0.254'
 PORT = 4559
 
 DEV_ADDR = 0x68

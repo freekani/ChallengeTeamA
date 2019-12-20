@@ -2,11 +2,12 @@
 
 import smbus
 import math
+import socket
 from time import sleep
 from pythonosc import udp_client
 from pythonosc.osc_message_builder import OscMessageBuilder
 
-IP = '192.168.0.20'
+IP = '192.168.0.255'
 PORT = 4559
 
 DEV_ADDR = 0x68
@@ -101,6 +102,7 @@ Before_a = 1.0
 interval = 10
 
 client = udp_client.UDPClient(IP, PORT)
+client._sock.setsockopt(socket.SOL_SOCKET,socket.SO_BROADCAST,1)
 print('start!')
 while 1:
     ax, ay, az = getAccel()
@@ -111,7 +113,7 @@ while 1:
     if(j >= 0.5 and interval >= 10):
         print(cnt)
         interval = 0
-        msg = OscMessageBuilder(address='/comand')
+        msg = OscMessageBuilder(address='/command')
         msg.add_arg(cnt)
         m = msg.build()
         client.send(m)
