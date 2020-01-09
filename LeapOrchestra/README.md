@@ -1,47 +1,52 @@
-# LeapMotion(Update 2019.07.15)
+# LeapMotion
 　:shipit:Leap Motionを用いたジェスチャ操作による、拍数情報をraspberry piに送る。
 ## 目次
-1. Rasberry pi(Ubuntu)でLeap motionが動くかの検証
-2. ~~Unity~~
-3. [Processing](#3processing)
-## 1.Rasberry pi(Ubuntu)でLeap motionが動くかの検証  
-- [x] [Ubuntu OSのダウンロード](https://wiki.ubuntu.com/ARM/RaspberryPi)（ubuntu-18.04.2-preinstalled-server-arm64+raspi3.img）  
-- [x] Ubuntu Desktopのインストール (ubuntu-mate-desktop)
-- [x] Ubuntuの言語設定
-- [x] [Leap Motion SDK for linux](https://www.leapmotion.com/setup/desktop/linux/)(Leap_Motion_Setup_Linux_2.3.1.tgz)
-- [ ] LeapMotionの環境構築  
-### 構築失敗原因
-        パッケージアーキテクチャ(amd64)がシステム(arm64)と一致しない
-![installError](https://github.com/freekani/ChallengeTeamA/blob/input/image/ubuntu_error.jpg)
-## ~~2.Unity~~
-- [x] [~~Unityのダウンロード~~](https://store.unity.com/ja?_ga=2.109239045.1635307830.1561082608-1793881246.1537953195&currency=JPY)
-- [x] [~~Unity Assets for Leap Motion Orion Betaのダウンロード（Leap_Motion_Core_Assets_ 4.4.0.unitypackage）~~]
-- [x] ~~LeapMotionの環境構築~~  
-- [ ] ~~開発~~
-## 3.Processing
-- [x] [Processingのダウンロード](https://processing.org/download/)
-- [x] LeapMotionの環境構築
-- [x] [UDP通信の実装](https://memorandums.hatenablog.com/entry/2016/11/08/203610)
-- [ ] ジャスチャーの設計
-- [ ] 拍数に検出
-- [ ] 指揮棒の検出
-- [ ] プログラムの完成
-### 開発
-　[leap-motion-processing](https://github.com/nok/leap-motion-processing)のコードで、Processingでleapmotionの実行を確認した
-#### LeapOrchestra（開発中）
-　[LeapOrchestraへ移動](https://github.com/SkyoKen/LeapOrchestra)
-#### LeapDraw（手の座標で線を描く）
-　[LeapDrawへ移動 (update 2019.06.21)](https://github.com/SkyoKen/LeapDraw)
-#### ~~Processing で通信するプログラム~~  
-　[~~NetTermianlへ移動 (update 2019.06.18)~~](https://github.com/SkyoKen/NetTerminal/tree/master/Net)
-#### ~~バイナリファイルからデータの書き込みと読み込み~~
-　[~~binaryへ移動 (update 2019.06.20)~~](https://github.com/SkyoKen/LeapOrchestra/tree/master/binary) 
-#### Processing用のUDP通信プログラム
-　[UDP通信プログラムへ移動](https://github.com/SkyoKen/NetTerminal/tree/master/UDP/Processing)
-#### LeapPiano（Leap Motionを用いたジェスチャ操作によるピアノを弾くプログラム）
-　[LeapPianoへ移動(update 2019.06.25)](https://github.com/SkyoKen/LeapPiano)
-### Processingでsonic piをコントロール（OSC通信）
-[Processing2SonicPiへ](https://github.com/SkyoKen/Processing2SonicPi)
-![Processing2SonicPi.png](https://github.com/SkyoKen/Leap_SonicPi/blob/master/info.png)
+1. [環境構築](#環境構築)  
+    1. [Leap Motion](#leapmotion)
+    2. [Processing](#processing)
+2. [指揮ジェスチャーの設計](#ジェスチャーの設計)
+    1. [各拍子の図形例](#各拍子の図形例)
+    2. [設計](#設計)
+3. [BPM](#BPM)
+## 環境構築
+
+| Item  | Version |
+|  ----  | ----  |
+| OS  | Windows 10  |
+| Leap Motion Software  | 3.2.1+45911 |
+| Processing  | processing-3.5.3 |
+
+### LeapMotion
+* [Leap_Motion_Developer_Kitのダウンロード（Leap_Motion_Setup.exe）](https://developer.leapmotion.com/get-started)
+* [Leap Motion SDKのダウンロード（Leap_Motion_Developer_Kit.zip）](https://developer.leapmotion.com/get-started)
+
+### Processing
+* [Processingのダウンロード](https://processing.org/download/)
+* [LeapJavaライブラリのインポート(com.leapmotion.leap)](https://developer-archive.leapmotion.com/documentation/java/devguide/Leap_Processing.html)
+* Leap Motion for processingライブラリのインポート
+* ControlP5ライブラリのインポート
+
+## ジェスチャーの設計
+### 各拍子の図形例
+[Wikipediaより](https://ja.wikipedia.org/wiki/%E6%8C%87%E6%8F%AE_(%E9%9F%B3%E6%A5%BD))
+
+| Tempo2 | Tempo3 | Tempo4 |
+|----|----|----| 
+| <img src="https://github.com/SkyoKen/LeapOrchestra/blob/master/image/Tempo2.png" height=200 alt="Tempo2" align=center> | <img src="https://github.com/SkyoKen/LeapOrchestra/blob/master/image/Tempo3.png" height=200 alt="Tempo3" align=center> | <img src="https://github.com/SkyoKen/LeapOrchestra/blob/master/image/Tempo4.png" height=200 alt="Tempo4" align=center> |
+| 2/4拍子、2/2拍子、テンポの速い6/8拍子及び速い4/4拍子 | 3/4拍子、3/8拍子及び9/8拍子 | 4/4拍子、12/8拍子及びテンポの遅い2/4（2/2）拍子 |
+
+### 設計
+
+||拍子|①|②|③|④|
+|----|----|----|----|----|----| 
+|Tempo2|<img src="https://github.com/SkyoKen/LeapOrchestra/blob/master/image/Tempo2__.png" height=200 alt="Tempo2_" align=center>|→|←|||
+|Tempo3|<img src="https://github.com/SkyoKen/LeapOrchestra/blob/master/image/Tempo3__.png" height=200 alt="Tempo3_" align=center>|<div align="center">↓</div>|→|↑||
+|Tempo4|<img src="https://github.com/SkyoKen/LeapOrchestra/blob/master/image/Tempo4__.png" height=200 alt="Tempo4_" align=center>|<div align="center">↓</div>|<div align="center">←</div>|→|↑|
+
+## BPM
+テンポの単位 - 一分間の拍数のこと。(60 bpm =>60拍/分)
+
+・ BPM=60/1拍かかった秒数
+
 
 [↑TOP](#目次)
