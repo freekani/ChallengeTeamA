@@ -13,21 +13,26 @@ class Leap {
   int smallestV=250;
   int biggestV=500;
   int t=0;
+  boolean changeBPM=false;
 
   Gesture[][] tempo={{}, {}, 
     //Tempo2
-    {new Gesture(new Vector[]{Vector.DOWN, Vector.RIGHT, Vector.UP}), 
-      new Gesture(new Vector[]{Vector.DOWN, Vector.LEFT, Vector.UP})}, 
+    {
+    new Gesture(new Vector[]{Vector.DOWN,Vector.RIGHT}), 
+      new Gesture(new Vector[]{Vector.DOWN,Vector.LEFT})}, 
+    
+  //  new Gesture(new Vector[]{Vector.DOWN, Vector.RIGHT, Vector.UP}), 
+    //  new Gesture(new Vector[]{Vector.DOWN, Vector.LEFT, Vector.UP})}, 
     //Tempo3
     {new Gesture( new Vector[]  {Vector.DOWN}), 
-      new Gesture( new Vector[]  {Vector.DOWN, Vector.RIGHT, Vector.UP}), 
-      new Gesture( new Vector[]  {Vector.DOWN, Vector.LEFT, Vector.UP}), 
+      new Gesture( new Vector[]  {Vector.RIGHT}), 
+      new Gesture( new Vector[]  {Vector.UP}), 
     }, 
     //Tempo4
     {new Gesture(new Vector[]{Vector.DOWN}), 
       new Gesture(new Vector[]{Vector.LEFT}), 
-      new Gesture(new Vector[]{Vector.DOWN, Vector.RIGHT, Vector.UP}), 
-      new Gesture(new Vector[]{ Vector.DOWN, Vector.LEFT, Vector.UP})}
+      new Gesture(new Vector[]{Vector.RIGHT}), 
+      new Gesture(new Vector[]{ Vector.UP})}
   };
   GestureList gesturelist=new GestureList(tempo[2]);
   Gesture vec=new Gesture();
@@ -55,7 +60,6 @@ class Leap {
       gui.getController("PLAY").setValue(1);
     }
   }
-
   boolean think() {
     for (com.leapmotion.leap.Hand hand : this.controller.frame().hands()) {
       PVector v=new PVector(hand.palmVelocity().getX(), hand.palmVelocity().getY(), hand.palmVelocity().getZ());
@@ -94,7 +98,9 @@ class Leap {
   }
   //ジェスチャー認識
   void checkGesture() {
-    if (gesturelist.check(this.vec, this.t/3*0.1)) {
+    boolean b=false;
+    b= changeBPM?(gesturelist.check(this.vec, this.t/3*0.1)):(gesturelist.check(this.vec));
+    if (b) {
       this.t=0;
       this.vec.clear();
     }

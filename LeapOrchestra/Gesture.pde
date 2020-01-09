@@ -94,8 +94,8 @@ class GestureList {
   boolean check(Gesture g) {
     Gesture gesture=this.list.get(this.num);
     if (gesture.check(g)) {
-      println(++this.num);
-      // osc.sendMessage("test", this.num);
+      this.num++;
+      osc.sendMessage("TEMPO",this.num);
       this.num%=this.list.size();
       return true;
     }
@@ -106,7 +106,7 @@ class GestureList {
     if (gesture.check(g)) {
       this.bpm.add(this.num==0?0:60/b);
       println(this.num+1, this.bpm.get(this.num));
-      this.num++;
+     this.num++;
       this.num%=this.list.size();
       if (this.num==0) {
         println("=================="+"BPM:"+ this.getBpm()+"==================");

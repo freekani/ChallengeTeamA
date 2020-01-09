@@ -37,29 +37,7 @@
       .setLineHeight(20)
       .setText(osc.getAddressPort())
       ;
-    String[] cp5MSG={"MUSICNUM", "VOLUME", "SCALE", "TIME"};
-    int btnSize=100;
-
-    //MUSICNUM,VOLUME,SCALE,TIME Buton
-    for (int y=0; y<cp5MSG.length; y++) {
-      PVector pos=new PVector(100+btnSize*3*(y%2), 100+btnSize*(y/2));
-      this.cp5.addTextlabel(cp5MSG[y])
-        .setText(cp5MSG[y])
-        .setPosition(pos.x+btnSize*1.5/2, pos.y-25)
-        .setColorValue(255)
-        .setFont(fontMsg)
-        ;
-      for (int x=0; x<2; x++) {
-        pos=new PVector(100+btnSize*3*(y%2), 100+btnSize*(y/2));
-        this.cp5.addBang(cp5MSG[y]+(x==0?"-":"+"))
-          .setLabel(x==0?"←":"→")
-          .setPosition(pos.x+btnSize*x*1.25, pos.y)
-          .setSize(btnSize, btnSize/2)
-          .setFont(font)
-          .align(CENTER, CENTER, CENTER, CENTER);
-      }
-    }
-
+   
     //PlayButon
     this.PLAY=this.cp5.addToggle("PLAY")
       .setPosition(width-250+25, 100)
@@ -67,6 +45,13 @@
       .setSize(100, 100)
       .setFont(font)
       .align(CENTER, CENTER, CENTER, CENTER);
+     this.cp5.addToggle("BPM")
+      .setPosition(width-250+25, 100)
+      .setLabel("BPM")
+      .setSize(100, 100)
+      .setFont(font)
+      .align(CENTER, CENTER, CENTER, CENTER)
+      .hide();
     //resetButon
     this.cp5.addBang("RESET")
       .setPosition(width-250+25, 225)
@@ -84,7 +69,7 @@
     this.cp5.addButtonBar("bar")
       .setPosition(0, 0)
       .setFont(fontMsg)
-      .setSize(width, 30)
+      .setSize(width, 50)
 
       .addItems(split("OPTION TEMPO2 TEMPO3 TEMPO4", " "))
       ;
@@ -139,30 +124,22 @@
    void show() {
     this.cp5.getController("PLAY").show();
     this.cp5.getController("RESET").show();
-    String[] msg={"MUSICNUM", "VOLUME", "SCALE", "TIME"};
-
-    for (int y=0; y<msg.length; y++) {
-      this.cp5.getController(msg[y]).show();
-      for (int x=0; x<2; x++) {
-        this.cp5.getController(msg[y]+(x==0?"-":"+")).show();
-      }
-    }
-  }
+    this.cp5.getController("BPM").hide();
+    
+  
+ }
    void hide() {
     this.cp5.getController("PLAY").hide();
     this.cp5.getController("RESET").hide();
-    String[] msg={"MUSICNUM", "VOLUME", "SCALE", "TIME"};
-
-    for (int y=0; y<msg.length; y++) {
-      this.cp5.getController(msg[y]).hide();
-      for (int x=0; x<2; x++) {
-        this.cp5.getController(msg[y]+(x==0?"-":"+")).hide();
-      }
-    }
+    this.cp5.getController("BPM").show();
+    
   }
    boolean getFlag() {
     return gui.getController("PLAY").getValue()==1;
   }
+}
+void BPM(boolean state){
+  lp.changeBPM=state;
 }
  void CLEAR() {
   gui.getConsole().clear();
@@ -175,20 +152,6 @@
   osc.sendMessage("FLAG", "RESET");
 }
 
- void controlEvent(ControlEvent theEvent) {
-  String[] cp5MSG={"MUSICNUM", "VOLUME", "SCALE", "TIME"};
-  if (theEvent.isAssignableFrom(Bang.class)) {
-    for (int i=0; i<cp5MSG.length; i++) {
-      String m=theEvent.getName();
-      float n=0;
-      if (cp5MSG[i].equals(m.substring(0, m.length()-1))) {
-        n=("-".equals(m.substring(m.length()-1)))?-1:1;
-        n=("TIME".equals(cp5MSG[i]))?n/4:n;
-        osc.sendMessage(cp5MSG[i].toString(), n);
-      }
-    }
-  }
-}
 
  void bar(int n) {
   switch(n) {
